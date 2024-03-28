@@ -51,6 +51,12 @@ body {
   padding: 0;
   margin: 0;
   background-color: #131417;
+  /* cursor: url(./assets/default_arrow.cur),; */
+  cursor: default; 
+}
+
+.button {
+  cursor: pointer;
 }
 
 .progress {

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 
 const themes = {
   blue: {
     primary: "text-blue-700",
-    bg: "bg-blue-700",
+    bg: "bg-blue-700/20",
     bgs: "bg-white",
     border: "border-white",
     secondary: "text-white",
@@ -20,11 +20,11 @@ const themes = {
   },
   black: {
     primary: "text-black",
-    bg: "bg-black",
-    bgs: "bg-white",
-    border: "border-white",
+    bg: "bg-green-700/50",
+    bgs: "bg-red-700",
+    border: "border-blue-700",
     secondary: "text-white",
-    svgcolor: "black",
+    svgcolor: "magenta",
   },
 };
 
@@ -46,14 +46,17 @@ const themes = {
 //   );
 // }
 
+
+
 interface SquareRectangleProps {
   theme: "blue" | "white" | "black";
   width: number;
   title: string;
   button?: string;
-  action?: () => void;
+  action?: () => void | undefined;
   children?: React.ReactNode;
   zIndex?: number;
+  close?: boolean;
 }
 
 const WindowBloc: React.FC<SquareRectangleProps> = ({
@@ -64,16 +67,26 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
   children,
   action,
   zIndex,
+  close,
 }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
+  const [visible, setVisible] = useState(true);
 
   const handleButtonClick = () => {
-    setButtonVisible(false);
+    if (close) {
+      setVisible(!visible);
+    }
+    else
+      setButtonVisible(!buttonVisible);
   };
 
+  
   const { primary, bg, bgs, border, secondary, svgcolor } = themes[theme];
+  const ref = useRef<HTMLDivElement>(null);
   return (
+
     <div
+      ref={ref}
       id="MargoBox"
       className={`${bg} p-2`}
       style={{
@@ -81,12 +94,13 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
         width: `${width}vw`,
         transition: "all 0.5s",
         transform: "rotate(90deg, 0)",
+        display: visible ? "" : "none"
       }}
     >
       <div
         style={{ display: "flex", justifyContent: "space-between" }}
         className={`text-3xl px-2 ${bgs} ${primary} border ${border} border-b-8 `}
-        onClick={() => setButtonVisible(!buttonVisible)}
+        onClick={ handleButtonClick }
       >
         {title}
           <svg
@@ -126,13 +140,14 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
         {children}
         {button && (
           <div
+
             style={{
               color: secondary,
               margin: "auto",
               transform: "translate(0, 10px)",
             }}
             onClick={action}
-            className={`${border} border-4 py-2 px-6`}
+            className={`${border} border-4 py-2 px-6 button`}
           >
             <p>{button}</p>
           </div>
