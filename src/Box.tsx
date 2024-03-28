@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 
 const themes = {
@@ -7,7 +8,7 @@ const themes = {
     bgs: "bg-white",
     border: "border-white",
     secondary: "text-white",
-    svgcolor: "rgb(29 78 216)"
+    svgcolor: "rgb(29 78 216)",
   },
   white: {
     primary: "text-white",
@@ -15,7 +16,7 @@ const themes = {
     bgs: "bg-black",
     border: "border-black",
     secondary: "text-black",
-    svgcolor: "white"
+    svgcolor: "white",
   },
   black: {
     primary: "text-black",
@@ -23,63 +24,27 @@ const themes = {
     bgs: "bg-white",
     border: "border-white",
     secondary: "text-white",
-    svgcolor: "black"
-  }
+    svgcolor: "black",
+  },
 };
 
-
-function Box() {
-  return (
-    <>
-      <SquareRectangleBlack
-        theme="black"
-        button={"Click me"}
-        width={20}
-        title={"PROFIL"}
-      >
-        <>
-        <img src="https://cdn.intra.42.fr/users/3aed91771be50eea96087d8d49c58d40/mgamil.jpg" alt="moha" />
-        <p>Hello world !!!</p>
-        </>
-        </SquareRectangleBlack>
-      {/* <br />
-      <SquareRectangleBlack
-        theme="blue"
-        width={30}
-        text={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam necpurus ac libero ultrices aliquam. Nullam nec purus ac libero ultrices	aliquam."
-        }
-        button={"Click me"}
-        photo={"https://cdn.intra.42.fr/users/3aed91771be50eea96087d8d49c58d40/mgamil.jpg"}
-      />
-      <br />
-      <SquareRectangleBlack
-        theme="black"
-        width={40}
-        button={"Ok"}
-        text={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam necpurus ac libero ultrices aliquam. Nullam nec purus ac libero ultricesaliquam."
-        }
-      />
-      <br />
-      <SquareRectangleBlack
-        theme="black"
-        width={10}
-        button={"Ok"}
-        text={"world hello"}
-      />
-      <br />
-      <SquareRectangleBlack
-        theme="white"
-        width={10}
-        button={"Ok"}
-        text={"hello world"}
-      />
-      <br /> */}
-      {/* </div> */}
-    </>
-  );
-}
+// function Box() {
+//   return (
+//     <>
+//       <WindowBloc
+//         theme="black"
+//         button={"Click me"}
+//         width={20}
+//         title={"PROFIL"}
+//       >
+//         <>
+//         <img src="https://cdn.intra.42.fr/users/3aed91771be50eea96087d8d49c58d40/mgamil.jpg" alt="moha" />
+//         <p>Hello world !!!</p>
+//         </>
+//         </WindowBloc>
+//     </>
+//   );
+// }
 
 interface SquareRectangleProps {
   theme: "blue" | "white" | "black";
@@ -88,15 +53,17 @@ interface SquareRectangleProps {
   button?: string;
   action?: () => void;
   children?: React.ReactNode;
+  zIndex?: number;
 }
 
-const SquareRectangleBlack: React.FC<SquareRectangleProps> = ({
+const WindowBloc: React.FC<SquareRectangleProps> = ({
   theme,
   width,
   button,
   title,
   children,
   action,
+  zIndex,
 }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
 
@@ -107,10 +74,13 @@ const SquareRectangleBlack: React.FC<SquareRectangleProps> = ({
   const { primary, bg, bgs, border, secondary, svgcolor } = themes[theme];
   return (
     <div
-      id="Pixer"
+      id="MargoBox"
       className={`${bg} p-2`}
       style={{
-        maxWidth: `${width}vw`,
+        zIndex: zIndex,
+        width: `${width}vw`,
+        transition: "all 0.5s",
+        transform: "rotate(90deg, 0)",
       }}
     >
       <div
@@ -119,22 +89,30 @@ const SquareRectangleBlack: React.FC<SquareRectangleProps> = ({
         onClick={() => setButtonVisible(!buttonVisible)}
       >
         {title}
-        <svg
-          onClick={handleButtonClick}
-          style={{ transform: "translate(0 , 5px)" }}
-          fill={svgcolor}
-          height="30px"
-          width="30px"
-          version="1.1"
-          id="Capa_1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 490 490"
-        >
-          <polygon
-            points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 
-	489.292,457.678 277.331,245.004 489.292,32.337 "
-          />
+          <svg
+            width="35px"
+
+            style={{ transform: "translate(0 , 2px)" }}
+            height="35px"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            fill="none"
+            stroke={svgcolor}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          >
+            {buttonVisible ? 
+            <>
+          (<line x1="5" y1="3" x2="15" y2="13" stroke={svgcolor} />
+          <line x1="5" y1="13" x2="15" y2="3" stroke={svgcolor} />)
+          </>
+            : 
+            <rect height="10" width="10" y="3" x="5" />
+          }
         </svg>
+        
       </div>
       <div
         style={{
@@ -149,12 +127,12 @@ const SquareRectangleBlack: React.FC<SquareRectangleProps> = ({
         {button && (
           <div
             style={{
-              color: primary,
+              color: secondary,
               margin: "auto",
               transform: "translate(0, 10px)",
             }}
             onClick={action}
-            className={`${bgs} ${primary} py-2 px-6`}
+            className={`${border} border-4 py-2 px-6`}
           >
             <p>{button}</p>
           </div>
@@ -164,7 +142,7 @@ const SquareRectangleBlack: React.FC<SquareRectangleProps> = ({
   );
 };
 
-export default Box;
+export default WindowBloc;
 
 // white F4F4F4
 // black 000000

@@ -12,9 +12,31 @@
   src: url("./assets/Pixer-Regular.woff2");
 }
 
-#Pixer {
+@keyframes revealAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) rotateX(100deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes invisibleAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+#MargoBox {
   font-family: "Pixer", sans-serif;
   color: pink;
+  /* animation: revealAnimation  cubic-bezier(0.5, 0, 0, 1) 1000ms 2000ms forwards; */
 }
 
 p {
@@ -22,5 +44,26 @@ p {
 }
 
 body {
-  background-color: #695c5c;
+  font-family: "Pixer", sans-serif;
+  width: 100vw;
+  height: 300vh;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  background-color: #131417;
+}
+
+.progress {
+  width: 158.4px;
+  height: 26.4px;
+  -webkit-mask: linear-gradient(90deg,#000000 70%,#0000 0) left/20% 100%;
+  background: linear-gradient(#000000 0 0) left/0% 100% no-repeat
+      #ffffff;
+  animation: progress-422c3u 2.8s infinite steps(6);
+}
+
+@keyframes progress-422c3u {
+  100% {
+     background-size: 120% 100%;
+  }
 }
