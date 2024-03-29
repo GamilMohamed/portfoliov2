@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import { themes } from "./Box";
 import styled from "styled-components";
@@ -7,10 +7,6 @@ interface TerminalProps {
   width: number;
   title: string;
 }
-
-const SVG = styled.svg<{ $color:string }>`
-  stroke: ${(props) => props.$color};
-`;
 
 const BigBloc = styled.div<{ $width: string, $primary: string }>`
   background-color: ${(props) => props.$primary};

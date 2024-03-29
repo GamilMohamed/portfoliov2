@@ -34,20 +34,6 @@
   
 } */
 
-#Gamil {
-  filter: drop-shadow(5px 5px black);
-}
-
-
-@media (max-width: 1000px) {
- #Welcome, #Terminal, #blackBloc{
-    display: none;
-  }
-  #CV {
-   /* width: fit-content; */
-   background-color: pink;
-  }
-}
 
 #MargoBox {
   font-family: "Pixer", sans-serif;
