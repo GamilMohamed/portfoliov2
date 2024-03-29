@@ -53,9 +53,19 @@ function App() {
     console.log("t is", t, "r is", r);
     setDivList((prevList) => [
       ...prevList,
+      <div
+      id="Golmon"
+      style={{
+        position: "absolute",
+        top: val[Math.floor(Math.random() * 2)].toString() + "vh",
+        right: val[Math.floor(Math.random() * 2)].toString() + "vw",
+        width: "23vw",
+      }}
+      >
+        
       <Reveal
-        top={t.toString() + "vw"}
-        right={r.toString() + "vw"}
+        // top={t.toString() + "vh"}
+        // right={r.toString() + "vw"}
         animation={classanimation}
         transition={{ duration: 0.35, delay: 0 }}
       >
@@ -71,7 +81,9 @@ function App() {
         >
           {dumbmsgs[Math.floor(Math.random() * dumbmsgs.length)]}
         </WindowBloc>
-      </Reveal>,
+      </Reveal>
+        </div>
+      ,
     ]);
   };
 
@@ -79,61 +91,78 @@ function App() {
     <>
       {/*  BLOC NOIR 1    */}
       <div
-      id="blackBloc"
+        id="blackBloc"
+        style={{
+          position: "absolute",
+          top: "10vh",
+          right: "20vw",
+          width: "20vw",
+        }}
       >
-
-      <Reveal
-        top="10vw"
-        right="20vw"
-        animation={newanimation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
-      >
-        <WindowBloc
-          zIndex={10}
-          theme="black"
-          button={"Click moi"}
-          width={20}
-          title={"PROFILE"}
+        <Reveal
+          // top="10vh"
+          // right="20vw"
+          animation={newanimation}
+          transition={{
+            duration: getRandomNumber(1),
+            delay: getRandomNumber(1),
+          }}
+        >
+          <WindowBloc
+            zIndex={10}
+            theme="black"
+            button={"Click moi"}
+            width={20}
+            title={"PROFILE"}
           >
-          <>
-            <p>Hello world !!!</p>
-            <p>Comment ca va ?</p>
-          </>
-        </WindowBloc>
-      </Reveal>
+            <>
+              <p>Hello world !!!</p>
+              <p>Comment ca va ?</p>
+            </>
+          </WindowBloc>
+        </Reveal>
       </div>
 
       {/*  BLOC BLEU 2    */}
-      <div  
-      id="Welcome"
+      <div
+        id="Welcome"
+        style={{
+          position: "absolute",
+          top: "18vh",
+          right: "5vw",
+          width: "23vw",
+        }}
       >
-      <Reveal
-        top="18vw"
-        right="5vw"
-        animation={animation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
+        <Reveal
+          // top="18vh"
+          // right="5vw"
+          animation={animation}
+          transition={{
+            duration: getRandomNumber(1),
+            delay: getRandomNumber(1),
+          }}
         >
-        <WindowBloc
-          zIndex={20}
-          theme="blue"
-          button={"Click me"}
-          width={23}
-          title={"WELCOME"}
-          action={() => handleNewDiv(18, 5)}
+          <WindowBloc
+            zIndex={20}
+            theme="blue"
+            button={"Click me"}
+            width={23}
+            title={"WELCOME"}
+            action={() => handleNewDiv(18, 5)}
           >
-          <>
-            <p>Welcome to my Portfolio !</p>
-          </>
-        </WindowBloc>
-      </Reveal>
-      {divList.map((div, index) => (
-        <div key={index}>{div}</div>
-      ))}
+            <>
+              <p>Welcome to my Portfolio !</p>
+            </>
+          </WindowBloc>
+        </Reveal>
+        {divList.map((div, index) => (
+          <div key={index}>{div}</div>
+        ))}
       </div>
 
       {/*  CV BLANC    */}
       <Reveal
-        top="5vw"
+        top="5vh"
         left="27vw"
         animation={animation}
         transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
@@ -186,17 +215,25 @@ function App() {
 
       {/*  TERMINAL 42    */}
       <div
-      id="Terminal"
+        id="Terminal"
+        style={{
+          position: "absolute",
+          top: "70vh",
+          right: "9vw",
+          width: "35vw",
+        }}
       >
-        
-      <Reveal
-        top="70vh"
-        right="9vw"
-        animation={newanimation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
+        <Reveal
+          // top="70vh"
+          // right="9vw"
+          animation={newanimation}
+          transition={{
+            duration: getRandomNumber(1),
+            delay: getRandomNumber(1),
+          }}
         >
-        <Terminal theme="black" width={35} title={"TERMINAL"}></Terminal>
-      </Reveal>
+          <Terminal theme="black" width={35} title={"TERMINAL"}></Terminal>
+        </Reveal>
       </div>
 
       {/*  GAMIL    */}
