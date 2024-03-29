@@ -1,11 +1,9 @@
-// import { useState } from "react";
 import WindowBloc from "./Box";
-// import { motion, useScroll, useTransform } from "framer-motion";
-import styled from "styled-components";
 import { Anim, Reveal } from "./test";
 import welcome from "./assets/welcome_to.png";
-import chevron from "./assets/chevron.png";
+import cub3d from "./assets/cub3d.mp4";
 import pixelmoha from "./assets/gamil_pix.png";
+import Terminal from "./Terminal";
 
 function getRandomNumber(max: GLfloat | number): GLfloat {
   // console.log("max is", max, "got", Math.random() * max);
@@ -27,8 +25,8 @@ const newanimation = {
   visible: { opacity: 1, y: 0, x: 0, rotateX: 0 },
 };
 
-const fast = { duration: getRandomNumber(1), delay: getRandomNumber(1) };
-const slow = { duration: 0.5, delay: 1.45 };
+// const fast = { duration: getRandomNumber(1), delay: getRandomNumber(1) };
+// const slow = { duration: 0.5, delay: 1.45 };
 
 const classanimation = {
   hidden: { opacity: 0, x: 0, rotateX: 90 },
@@ -45,19 +43,19 @@ function App() {
     "I'm a bloc",
     "I'm a box",
     "I'm not a square",
-    "I'm a rectangle"
+    "I'm a rectangle",
   ];
 
   const handleNewDiv = (t: number, r: number) => {
-  const val = [-1, 1]; 
+    const val = [-1, 1];
     t += val[Math.floor(Math.random() * 2)];
     r += val[Math.floor(Math.random() * 2)];
     console.log("t is", t, "r is", r);
-    setDivList(prevList => [
+    setDivList((prevList) => [
       ...prevList,
       <Reveal
-        top={ t.toString() + "vw"}
-        right={ r.toString() + "vw"}
+        top={t.toString() + "vw"}
+        right={r.toString() + "vw"}
         animation={classanimation}
         transition={{ duration: 0.35, delay: 0 }}
       >
@@ -73,7 +71,7 @@ function App() {
         >
           {dumbmsgs[Math.floor(Math.random() * dumbmsgs.length)]}
         </WindowBloc>
-      </Reveal>
+      </Reveal>,
     ]);
   };
 
@@ -88,7 +86,7 @@ function App() {
       >
         <WindowBloc
           zIndex={10}
-          theme="black"
+          theme="white"
           button={"Click me"}
           width={20}
           title={"PROFILE"}
@@ -96,6 +94,31 @@ function App() {
           <>
             <p>Hello world !!!</p>
             <p>Comment ca va ?</p>
+          </>
+        </WindowBloc>
+      </Reveal>
+      <Reveal
+        top="70vw"
+        left="10vw"
+        animation={newanimation}
+        transition={{ duration: 0.5, delay: 0.25 }}
+      >
+        <WindowBloc
+          zIndex={10}
+          theme="white"
+          button={"ICI C'EST PARIS"}
+          width={40}
+          title={"THOMAS"}
+        >
+          <>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <p>MON GARS THOMAS</p>
+            <img src={pixelmoha} alt="chevron" />
           </>
         </WindowBloc>
       </Reveal>
@@ -116,7 +139,6 @@ function App() {
           action={() => handleNewDiv(18, 5)}
         >
           <>
-            <p>Hello world !!!</p>
             <p>Welcome to my Portfolio !</p>
           </>
         </WindowBloc>
@@ -142,6 +164,26 @@ function App() {
         >
           <>
             <p>CURRICULUM VITAE</p>
+          </>
+        </WindowBloc>
+      </Reveal>
+      {/*  CV BLANC    */}
+      <Reveal
+        top="50vw"
+        left="27vw"
+        animation={animation}
+        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
+      >
+        <WindowBloc
+          zIndex={70}
+          theme="black"
+          width={40}
+          title={"MINISHELL"}
+          action={() => alert("coucou")}
+        >
+          <>
+            <img src={cub3d}></img>
+            {/* <p>CURRICULUM VITAE</p> */}
           </>
         </WindowBloc>
       </Reveal>
@@ -185,18 +227,16 @@ function App() {
       {/*  JUNIOR 42    */}
       <Reveal
         top="70vh"
-        right="11vw"
+        right="9vw"
         animation={newanimation}
         transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
       >
-        <WindowBloc zIndex={10} theme="black" width={21} title={"MGAMSSSSSIL"}>
-          <>
-            <p>incroyable</p>
-            <p>ECOLE 42</p>
-            {/* <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-          </div> */}
-          </>
-        </WindowBloc>
+        <Terminal
+          theme="black"
+          width={35}
+          title={"TERMINAL"}
+        >
+        </Terminal>
       </Reveal>
 
       {/*  GAMIL    */}
@@ -208,7 +248,7 @@ function App() {
       >
         <div>
           <h1 className="text-white" style={{ fontSize: "15rem", zIndex: 30 }}>
-            GAMIL
+            Gamil
           </h1>
         </div>
       </Reveal>
