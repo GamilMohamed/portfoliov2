@@ -9,6 +9,8 @@ export const themes = {
     border: "border-white",
     secondary: "text-white",
     svgcolor: "rgb(29 78 216)",
+    main: "blue",
+    second: "white"
   },
   white: {
     primary: "text-white",
@@ -17,6 +19,8 @@ export const themes = {
     border: "border-black",
     secondary: "text-black",
     svgcolor: "white",
+    main: "white",
+    second: "black"
   },
   black: {
     primary: "text-black",
@@ -25,6 +29,9 @@ export const themes = {
     border: "border-white",
     secondary: "text-white",
     svgcolor: "black",
+
+    main: "black",
+    second: "white"
   },
   thomas: {
     primary: "text-red-700",
@@ -56,7 +63,7 @@ export const themes = {
 
 interface SquareRectangleProps {
   theme: "blue" | "white" | "black";
-  width: number;
+  width?: number;
   title: string;
   button?: string;
   action?: () => void | undefined;
@@ -68,16 +75,15 @@ interface SquareRectangleProps {
 
 const WindowBloc: React.FC<SquareRectangleProps> = ({
   theme,
-  width,
+  width = "max-content",
   button,
   title,
   children,
   action,
   zIndex,
   close,
-  pad,
+  pad = "p-10",
 }) => {
-  if (!pad) pad = "p-10";
   const [buttonVisible, setButtonVisible] = useState(true);
   const [visible, setVisible] = useState(true);
 
@@ -166,13 +172,13 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
       </div>
       <div
         style={{
-          // justifyContent: "center",
+          justifyContent: "center",
           flexDirection: "column",
-          // alignContent: "center",
+          alignContent: "center",
           display: buttonVisible ? "flex" : "none",
           // padding: "10px",
         }}
-        className={`${bg} ${secondary}  p-10 border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
+        className={`${bg} ${secondary}  ${pad} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
       >
         {children}
         {button && (

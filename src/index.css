@@ -27,37 +27,27 @@
     transform: scale(1) rotateX(0deg);
   }
 }
-@keyframes tg {
-  0% {
-    opacity: 1;
-    transform: translate(0, -50%) rotateX(0deg);
-  }
-  100% {
-    transform: rotateX(180deg);
-    display: none;
-  }
-}
-
-/* #blackBloc,
+/* 
+#blackBloc,
 #Terminal,
 #Welcome {
+  
+} */
 
+#Gamil {
+  filter: drop-shadow(5px 5px black);
 }
+
 
 @media (max-width: 1000px) {
- #Welcome {
-  animation: tg 1s forwards;
+ #Welcome, #Terminal, #blackBloc{
+    display: none;
+  }
+  #CV {
+   /* width: fit-content; */
+   background-color: pink;
   }
 }
-
-@keyframes invisibleAnimation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} */
 
 #MargoBox {
   font-family: "Pixer", sans-serif;

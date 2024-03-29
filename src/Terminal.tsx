@@ -1,58 +1,95 @@
 import React, { useRef } from "react";
 import { useState } from "react";
 import { themes } from "./Box";
+import styled from "styled-components";
 interface TerminalProps {
   theme: "blue" | "white" | "black";
   width: number;
   title: string;
 }
 
-const commands: any = {
-ls: "list files",
-clear: "clear screen",
-echo: "print text",
-touch: "create file",
-rm: "remove file",
-mv: "move file",
-cp: "copy file",
-cat: "print file",
-pwd: "print working directory",
-cd: "change directory",
-mkdir: "make directory",
-rmdir: "remove directory",
+const SVG = styled.svg<{ $color:string }>`
+  stroke: ${(props) => props.$color};
+`;
+
+const BigBloc = styled.div<{ $width: string, $primary: string }>`
+  background-color: ${(props) => props.$primary};
+  width: ${(props) => props.$width};
+  transition: all 0.5s;
+  transform: rotate(90deg, 0);
+`;
+
+const TitleBloc = styled.div<{ $primary: string, $secondary: string}>`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${(props) => props.$secondary};
+  color: ${(props) => props.$primary};
+  border-bottom-width: 8px;
+  border-color: ${(props) => props.$secondary};
+`;
+
+const DataBloc = styled.div<{ $primary: string, $secondary: string}>`
+  background-color: ${(props) => props.$primary};
+  color: ${(props) => props.$secondary};
+  border-bottom-width: 8px;
+  border-left-width: 8px;
+  border-right-width: 8px;
+  border-color: ${(props) => props.$secondary};
+`;
+
+const commands: { [key: string]: string } = {
+  ls: "list files",
+  clear: "clear screen",
+  echo: "print text",
+  touch: "create file",
+  rm: "remove file",
+  help: "get help",
+  whoami: "get user",
+  man: "get manual page",
 };
+
+const presentation: string[] = [
+  ">>> Hi ! I'm Moha, a fullstack developer.",
+  ">>> I'm a student at 42 Paris and searching for an internship.",
+  ">>> I'm a daily coder of TypeScript and love to automate things using Python.",
+  ">>> AI, Web, Mobile, I'm ready to work on any project because I love to take on new challenges.",
+  ">>> Scroll down to see my projects and contact me.",
+  ">>> ",
+];
+
+const prompt = "Shell> ";
+
 
 const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
-  const [history, setHistory] = useState<string[]>([]);
+  const [history, setHistory] = useState<string[]>(presentation);
   const [myCommands, setCommands] = useState<string[]>([]);
   const [count, setCount] = useState<number>(1);
   const [myFiles, setFiles] = useState<string[]>([]);
 
   const handleHistory = (input: string) => {
     if (!input || input === "") {
-      setHistory((prev) => [...prev, "Shell> "].slice(-5));
+      setHistory((prev) => [...prev, prompt]);
       return;
     }
-    setHistory((prev) => [...prev, "Shell> " + input].slice(-5));
+    setHistory((prev) => [...prev, prompt + input]);
     const cmd = input.trim().split(" ")[0];
-    setCommands((prev) => [...prev, cmd].slice(-5));
+    setCommands((prev) => [...prev, cmd]);
     const args = input.trim().split(" ").slice(1);
 
     switch (cmd) {
       case "ls":
         setHistory((prev) =>
           [
-            ...prev,
-            "Shell> " + myFiles.map((file) => " " + file).join(" "),
-          ].slice(-5)
+            ...prev, myFiles.map((file) => " " + file).join(" "),
+          ]
         );
         break;
       case "clear":
         setHistory([]);
         break;
       case "echo":
-        setHistory((prev) => [...prev, "Shell> " + args.join(" ")].slice(-5));
+        setHistory((prev) => [...prev, args.join(" ")]);
         break;
       case "touch":
         setFiles((prev) => [
@@ -63,57 +100,32 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
       case "rm":
         setFiles((prev) => prev.filter((file) => file !== args[0]));
         break;
-      case "mv":
-        setFiles((prev) =>
-          prev.map((file) => (file === args[0] ? args[1] : file))
-        );
-        break;
-      case "cp":
-        setFiles((prev) => [...prev, args[1]]);
-        break;
-      case "cat":
-        setHistory((prev) =>
-          [...prev, "Shell> " + myFiles.find((file) => file === args[0])].slice(
-            -5
-          )
-        );
-        break;
-      case "pwd":
-        setHistory((prev) => [...prev, "Shell> " + "/Moha"].slice(-5));
-        break;
-      case "cd":
-        setHistory((prev) => [...prev, "Shell> " + "Moha"].slice(-5));
-        break;
-      case "mkdir":
-        setFiles((prev) => [...prev, args[0]]);
-        break;
-      case "rmdir":
-        setFiles((prev) => prev.filter((file) => file !== args[0]));
-        break;
       case "help":
         setHistory((prev) =>
           [
             ...prev,
-            "Shell> " +
-              "ls: list files, clear: clear screen, echo: print text, touch: create file, rm: remove file, mv: move file, cp: copy file, cat: print file, pwd: print working directory, cd: change directory, mkdir: make directory, rmdir: remove directory",
-          ].slice(-5)
+            prompt +
+              "ls, clear, whoami, echo, touch, rm, man",
+          ]
         );
         break;
-	case "man":
-		setHistory((prev) =>
-		  [
-			...prev,
-			"Shell> " + commands[args[0]] || "no man page",
-		  ].slice(-5)
-		);
-		break;
+        case "whoami":
+          setHistory(presentation);
+          break;
+        
+  case "man":
+    setHistory((prev) =>
+      [
+      ...prev,
+      prompt + commands[args[0]] || "no man page",
+      ]
+    );
+    break;
       default:
         setHistory((prev) =>
-          [...prev, "Shell> " + cmd + ": command not found"].slice(-5)
+          [...prev, prompt + cmd + ": command not found"]
         );
     }
-
-    console.log(history);
   };
 
   const [inputValue, setInputValue] = useState("");
@@ -124,23 +136,18 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
     setInputValue(event.target.value);
   };
 
-  console.log("theme", theme);
-  const { primary, bg, bgs, border, secondary, svgcolor } = themes[theme];
-  const ref = useRef<HTMLDivElement>(null);
+  const { main, second } = themes[theme];
   return (
-    <div
-      ref={ref}
+    <BigBloc
+    $primary={main}
+    $width={width + "vw"}
       id="MargoBox"
-      className={`${bg} p-2`}
-      style={{
-        width: `${width}vw`,
-        transition: "all 0.5s",
-        transform: "rotate(90deg, 0)",
-      }}
+      className={`p-2`}
     >
-      <div
-        style={{ display: "flex", justifyContent: "space-between" }}
-        className={`text-3xl px-2 ${bgs} ${primary} border ${border} border-b-8 `}
+      <TitleBloc
+      $primary={main}
+      $secondary={second}
+        className={`text-3xl px-2`}
         onClick={() => setButtonVisible(!buttonVisible)}
       >
         {title}
@@ -149,48 +156,46 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
           style={{ transform: "translate(0 , 2px)" }}
           height="35px"
           viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
           fill="none"
-          stroke={svgcolor}
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke={main}
           strokeWidth="1"
         >
           {/* MINUS */}
           {(buttonVisible && (
-            <line x1="5" y1="8" x2="15" y2="8" stroke={svgcolor} />
+            <line x1="5" y1="8" x2="15" y2="8" stroke={main} />
           )) || <rect height="10" width="10" y="3" x="5" />}
         </svg>
-      </div>
-      <div
+      </TitleBloc>
+      <DataBloc
+      $primary={main}
+      $secondary={second}
         style={{
           flexDirection: "column",
           position: "relative",
           display: buttonVisible ? "flex" : "none",
           justifyContent: "flex-end",
+          // maxHeight: "8vh",
+          height: "20rem",
+          overflowX: "hidden",
         }}
-        className={`${bg} ${secondary} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
+        className={`text-2xl`}
       >
         <>
-          {Array.from({ length: 5 - history.length }).map((_, index) => (
-            <br key={index} />
-          ))}
           {history.map((command, index) => (
             <p key={index}>{command}</p>
           ))}
           <span
-            style={{
-              color: "white",
-            }}
-          >
+          style={{
+            backgroundColor: main,
+          }}
+            >
             Shell&gt;
           </span>
           <input
             id="link"
-            prefix="Moha> "
             value={inputValue}
             onChange={handleInputChange}
+            className={`w-full`}
             onKeyDown={(e: React.KeyboardEvent) => {
               if (e.key === "Enter") {
                 handleHistory(inputValue);
@@ -206,19 +211,21 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
                 setInputValue(myCommands[myCommands.length - count - 1]);
               }
             }}
-            className="bg-black text-white w-full"
             style={{
+              height: "2rem",
               position: "absolute",
               left: "68px",
               width: "calc(100% - 68px)",
               outline: "none",
               border: "none",
               textDecoration: "none",
+              color: second,
+              backgroundColor: main,
             }}
           />
         </>
-      </div>
-    </div>
+      </DataBloc>
+    </BigBloc>
   );
 };
 

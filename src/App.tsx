@@ -24,15 +24,16 @@ const newanimation = {
   },
   visible: { opacity: 1, y: 0, x: 0, rotateX: 0 },
 };
-
 // const fast = { duration: getRandomNumber(1), delay: getRandomNumber(1) };
-// const slow = { duration: 0.5, delay: 1.45 };
-
 const classanimation = {
   hidden: { opacity: 0, x: 0, rotateX: 90 },
   visible: { opacity: 1, x: 0, rotateX: 0 },
 };
 
+const normal = {
+  hidden: { opacity: 0, rotateX: 90 },
+  visible: { opacity: 1, rotateX: 0 },
+};
 import { useState, ReactNode } from "react";
 function App() {
   const [divList, setDivList] = useState<ReactNode[]>([]);
@@ -54,36 +55,34 @@ function App() {
     setDivList((prevList) => [
       ...prevList,
       <div
-      id="Golmon"
-      style={{
-        position: "absolute",
-        top: val[Math.floor(Math.random() * 2)].toString() + "vh",
-        right: val[Math.floor(Math.random() * 2)].toString() + "vw",
-        width: "23vw",
-      }}
+        id="Golmon"
+        style={{
+          position: "absolute",
+          top: val[Math.floor(Math.random() * 2)].toString() + "vh",
+          right: val[Math.floor(Math.random() * 2)].toString() + "vw",
+          width: "23vw",
+        }}
       >
-        
-      <Reveal
-        // top={t.toString() + "vh"}
-        // right={r.toString() + "vw"}
-        animation={classanimation}
-        transition={{ duration: 0.35, delay: 0 }}
-      >
-        <WindowBloc
-          zIndex={10}
-          theme="blue"
-          button={"Don't click me"}
-          width={20 + val[Math.floor(Math.random() * 2)]}
-          title={"PROFILE"}
-          action={() => handleNewDiv(t, r)}
-          key={divList.length}
-          close={true}
+        <Reveal
+          // top={t.toString() + "vh"}
+          // right={r.toString() + "vw"}
+          animation={classanimation}
+          transition={{ duration: 0.35, delay: 0 }}
         >
-          {dumbmsgs[Math.floor(Math.random() * dumbmsgs.length)]}
-        </WindowBloc>
-      </Reveal>
-        </div>
-      ,
+          <WindowBloc
+            zIndex={10}
+            theme="blue"
+            button={"Don't click me"}
+            width={20 + val[Math.floor(Math.random() * 2)]}
+            title={"PROFILE"}
+            action={() => handleNewDiv(t, r)}
+            key={divList.length}
+            close={true}
+          >
+            {dumbmsgs[Math.floor(Math.random() * dumbmsgs.length)]}
+          </WindowBloc>
+        </Reveal>
+      </div>,
     ]);
   };
 
@@ -134,8 +133,6 @@ function App() {
         }}
       >
         <Reveal
-          // top="18vh"
-          // right="5vw"
           animation={animation}
           transition={{
             duration: getRandomNumber(1),
@@ -145,13 +142,14 @@ function App() {
           <WindowBloc
             zIndex={20}
             theme="blue"
-            button={"Click me"}
+            button={"OK"}
             width={23}
             title={"WELCOME"}
             action={() => handleNewDiv(18, 5)}
           >
             <>
-              <p>Welcome to my Portfolio !</p>
+              <p>Welcome to my portfolio !</p>
+              <p>Scroll to see my job!</p>
             </>
           </WindowBloc>
         </Reveal>
@@ -161,35 +159,51 @@ function App() {
       </div>
 
       {/*  CV BLANC    */}
-      <Reveal
-        top="5vh"
-        left="27vw"
-        animation={animation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
+      <div
+        id="CV"
+        style={{
+          position: "absolute",
+          top: "5vh",
+          left: "27vw",
+          // width: "20vw",
+        }}
       >
-        <WindowBloc
-          zIndex={30}
-          theme="white"
-          button={"LIRE LE CV"}
-          width={20}
-          title={"CV"}
-          action={() => alert("coucou")}
+        <Reveal
+          animation={animation}
+          transition={{
+            duration: getRandomNumber(1),
+            delay: getRandomNumber(1),
+          }}
         >
-          <>
-            <p>CURRICULUM VITAE</p>
-          </>
-        </WindowBloc>
-      </Reveal>
-      {/*  CV BLANC    */}
+          <WindowBloc
+            zIndex={30}
+            theme="white"
+            button={"READ"}
+            width={20}
+            title={"CV"}
+            action={() => alert("coucou")}
+          >
+            <>
+              <p>CURRICULUM VITAE</p>
+            </>
+          </WindowBloc>
+        </Reveal>
+      </div>
 
       {/*  MOHA PIXEL    */}
       <Reveal
         top="23vh"
         left="13vw"
         animation={newanimation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
+        transition={{ duration: 2, delay: 0 }}
       >
-        <WindowBloc zIndex={10} theme="blue" width={20} title={"MGAMIL"}>
+        <WindowBloc
+          zIndex={10}
+          theme="blue"
+          width={20}
+          pad={false}
+          title={"MGAMIL"}
+        >
           <>
             <img src={pixelmoha} alt="moha" />
           </>
@@ -197,35 +211,51 @@ function App() {
       </Reveal>
 
       {/*  MOHAMED    */}
-      <Reveal
-        top="40vh"
-        left="26vw"
-        animation={animation}
-        transition={{
-          duration: getRandomNumber(0.5),
-          delay: getRandomNumber(2),
+      <div
+        style={{
+          position: "absolute",
+          top: "40vh",
+          left: "26vw",
+          width: "20vw",
+          zIndex: 60,
         }}
       >
-        <img
-          style={{ height: "17vh", zIndex: 30 }}
-          src={welcome}
-          alt="welcome"
-        />
-      </Reveal>
+        <Reveal
+          animation={normal}
+          transition={{
+            duration: 1.1,
+            delay: 0,
+          }}
+        >
+          <WindowBloc
+            zIndex={10}
+            pad={false}
+            theme="black"
+            title={"MY NAME IS"}
+          >
+            <>
+              <p
+                className="text-9xl"
+                style={{ transform: "translate(0 , -7px)" }}
+              >
+                MOHAMED
+              </p>
+            </>
+          </WindowBloc>
+        </Reveal>
+      </div>
 
       {/*  TERMINAL 42    */}
       <div
         id="Terminal"
         style={{
           position: "absolute",
-          top: "70vh",
-          right: "9vw",
+          top: "60vh",
+          right: "2vw",
           width: "35vw",
         }}
       >
         <Reveal
-          // top="70vh"
-          // right="9vw"
           animation={newanimation}
           transition={{
             duration: getRandomNumber(1),
@@ -237,20 +267,80 @@ function App() {
       </div>
 
       {/*  GAMIL    */}
+      <div
+      style={{
+        position: "absolute",
+        top: "50vh",
+        left: "26vw",
+        width: "20vw",
+        zIndex: 60,
+      }}
+      >
       <Reveal
-        top="50vh"
-        left="26vw"
         animation={animation}
         transition={{ duration: getRandomNumber(1), delay: getRandomNumber(2) }}
-      >
+        >
         <div>
-          <h1 className="text-white" style={{ fontSize: "15rem", zIndex: 30 }}>
-            Gamil
-          </h1>
+          <h1 id="Gamil" className="text-white" style={{ fontSize: "15rem", zIndex: 30 }}>
+            GAMIL</h1>
         </div>
       </Reveal>
+        </div>
 
-      {/*  CHEVRON    */}
+      {/*  42    */}
+      <Reveal
+        bottom="2vh"
+        left="6vw"
+        animation={animation}
+        transition={{ duration: 2, delay: 0 }}
+      >
+        <WindowBloc zIndex={10} theme="black" pad={false} title={"MGAMIL"}>
+          <>
+            {/* <p>sQDSQD</p> */}
+            <svg
+              width="200px"
+              version="1.1"
+              viewBox="0 -200 960 960"
+              fill="white"
+              // enable-background="new 0 -200 960 960"
+            >
+              <polygon
+                id="polygon5"
+                points="32,412.6 362.1,412.6 362.1,578 526.8,578 526.8,279.1 197.3,279.1 526.8,-51.1 362.1,-51.1 
+	32,279.1 "
+              />
+              <polygon
+                id="polygon7"
+                points="597.9,114.2 762.7,-51.1 597.9,-51.1 "
+              />
+              <polygon
+                id="polygon9"
+                points="762.7,114.2 597.9,279.1 597.9,443.9 762.7,443.9 762.7,279.1 928,114.2 928,-51.1 762.7,-51.1 "
+              />
+              <polygon
+                id="polygon11"
+                points="928,279.1 762.7,443.9 928,443.9 "
+              />
+            </svg>
+          </>
+        </WindowBloc>
+      </Reveal>
+      <div 
+      style={{
+        position: "absolute",
+        // bottom: "1vh",
+        // margin: "auto",
+        // left: "50vw",
+        left: "50%",
+        top: "92%",
+        transform: "translate(-50%, -50%)",
+        // transform: "translate(50%, 50%)",
+        zIndex: 60,
+      }}
+      >
+      <svg width="128px" height="128px" viewBox="0 0 64.00 64.00" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="3.2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.28"></g><g id="SVGRepo_iconCarrier"><polyline points="48 32 32 48 16 32"></polyline><polyline points="48 16 32 32 16 16"></polyline></g></svg>
+
+      </div>
     </>
   );
 }
