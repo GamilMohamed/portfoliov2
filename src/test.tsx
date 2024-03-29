@@ -16,6 +16,7 @@ interface Props {
   left?: string;
   animation: any;
   transition: any;
+  id?: string;
 }
 
 // const animation: Anim = {

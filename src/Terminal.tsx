@@ -1,41 +1,122 @@
 import React, { useRef } from "react";
 import { useState } from "react";
 import { themes } from "./Box";
-const commands = ["ls", "clear", "echo"];
-
 interface TerminalProps {
   theme: "blue" | "white" | "black";
   width: number;
   title: string;
 }
 
+const commands: any = {
+ls: "list files",
+clear: "clear screen",
+echo: "print text",
+touch: "create file",
+rm: "remove file",
+mv: "move file",
+cp: "copy file",
+cat: "print file",
+pwd: "print working directory",
+cd: "change directory",
+mkdir: "make directory",
+rmdir: "remove directory",
+};
+
 const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [history, setHistory] = useState<string[]>([]);
+  const [myCommands, setCommands] = useState<string[]>([]);
+  const [count, setCount] = useState<number>(1);
+  const [myFiles, setFiles] = useState<string[]>([]);
 
   const handleHistory = (input: string) => {
-    setHistory((prev) => [...prev, input]);
-    const cmd = input.slice(6).trim().split(" ")[0];
-    const args = input.slice(6).trim().split(" ").slice(1);
+    if (!input || input === "") {
+      setHistory((prev) => [...prev, "Shell> "].slice(-5));
+      return;
+    }
+    setHistory((prev) => [...prev, "Shell> " + input].slice(-5));
+    const cmd = input.trim().split(" ")[0];
+    setCommands((prev) => [...prev, cmd].slice(-5));
+    const args = input.trim().split(" ").slice(1);
 
-    if (!commands.includes(cmd))
-      setHistory((prev) => [...prev, "Shell> " + cmd + ": command not found"]);
     switch (cmd) {
       case "ls":
-        setHistory((prev) => [...prev, "Shell> " + "README.md"]);
+        setHistory((prev) =>
+          [
+            ...prev,
+            "Shell> " + myFiles.map((file) => " " + file).join(" "),
+          ].slice(-5)
+        );
         break;
       case "clear":
         setHistory([]);
         break;
       case "echo":
-        setHistory((prev) => [...prev, "Shell> " + args.join(" ")]);
+        setHistory((prev) => [...prev, "Shell> " + args.join(" ")].slice(-5));
         break;
+      case "touch":
+        setFiles((prev) => [
+          ...prev,
+          ...args.filter((file) => !prev.includes(file)),
+        ]);
+        break;
+      case "rm":
+        setFiles((prev) => prev.filter((file) => file !== args[0]));
+        break;
+      case "mv":
+        setFiles((prev) =>
+          prev.map((file) => (file === args[0] ? args[1] : file))
+        );
+        break;
+      case "cp":
+        setFiles((prev) => [...prev, args[1]]);
+        break;
+      case "cat":
+        setHistory((prev) =>
+          [...prev, "Shell> " + myFiles.find((file) => file === args[0])].slice(
+            -5
+          )
+        );
+        break;
+      case "pwd":
+        setHistory((prev) => [...prev, "Shell> " + "/Moha"].slice(-5));
+        break;
+      case "cd":
+        setHistory((prev) => [...prev, "Shell> " + "Moha"].slice(-5));
+        break;
+      case "mkdir":
+        setFiles((prev) => [...prev, args[0]]);
+        break;
+      case "rmdir":
+        setFiles((prev) => prev.filter((file) => file !== args[0]));
+        break;
+      case "help":
+        setHistory((prev) =>
+          [
+            ...prev,
+            "Shell> " +
+              "ls: list files, clear: clear screen, echo: print text, touch: create file, rm: remove file, mv: move file, cp: copy file, cat: print file, pwd: print working directory, cd: change directory, mkdir: make directory, rmdir: remove directory",
+          ].slice(-5)
+        );
+        break;
+	case "man":
+		setHistory((prev) =>
+		  [
+			...prev,
+			"Shell> " + commands[args[0]] || "no man page",
+		  ].slice(-5)
+		);
+		break;
+      default:
+        setHistory((prev) =>
+          [...prev, "Shell> " + cmd + ": command not found"].slice(-5)
+        );
     }
 
     console.log(history);
   };
 
-  const [inputValue, setInputValue] = useState("Shell> ");
+  const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -92,16 +173,19 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
         className={`${bg} ${secondary} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
       >
         <>
-		{Array.from({ length: 7 - history.length }).map((_, index) => (
-  			<br key={index} />
-		))}
-          {history.map((command, index) => (
-            <p
-              key={index}
-            >
-              {command}
-            </p>
+          {Array.from({ length: 5 - history.length }).map((_, index) => (
+            <br key={index} />
           ))}
+          {history.map((command, index) => (
+            <p key={index}>{command}</p>
+          ))}
+          <span
+            style={{
+              color: "white",
+            }}
+          >
+            Shell&gt;
+          </span>
           <input
             id="link"
             prefix="Moha> "
@@ -110,11 +194,23 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
             onKeyDown={(e: React.KeyboardEvent) => {
               if (e.key === "Enter") {
                 handleHistory(inputValue);
-                setInputValue("Shell> ");
+                setInputValue("");
+                setCount(1);
+              }
+              if (e.key === "ArrowUp" && history.length > 0) {
+                setCount(count + 1);
+                setInputValue(myCommands[myCommands.length - count]);
+              }
+              if (e.key === "ArrowDown" && history.length > 0) {
+                setCount(count - 1);
+                setInputValue(myCommands[myCommands.length - count - 1]);
               }
             }}
             className="bg-black text-white w-full"
             style={{
+              position: "absolute",
+              left: "68px",
+              width: "calc(100% - 68px)",
               outline: "none",
               border: "none",
               textDecoration: "none",
@@ -130,3 +226,14 @@ export default Terminal;
 
 // white F4F4F4
 // black 000000
+
+/*
+
+5 ABC
+4 DEF
+3 GHI
+2 JKL
+1 MNO
+
+
+*/

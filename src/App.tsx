@@ -78,6 +78,10 @@ function App() {
   return (
     <>
       {/*  BLOC NOIR 1    */}
+      <div
+      id="blackBloc"
+      >
+
       <Reveal
         top="10vw"
         right="20vw"
@@ -86,50 +90,29 @@ function App() {
       >
         <WindowBloc
           zIndex={10}
-          theme="white"
-          button={"Click me"}
+          theme="black"
+          button={"Click moi"}
           width={20}
           title={"PROFILE"}
-        >
+          >
           <>
             <p>Hello world !!!</p>
             <p>Comment ca va ?</p>
           </>
         </WindowBloc>
       </Reveal>
-      <Reveal
-        top="70vw"
-        left="10vw"
-        animation={newanimation}
-        transition={{ duration: 0.5, delay: 0.25 }}
-      >
-        <WindowBloc
-          zIndex={10}
-          theme="white"
-          button={"ICI C'EST PARIS"}
-          width={40}
-          title={"THOMAS"}
-        >
-          <>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <p>MON GARS THOMAS</p>
-            <img src={pixelmoha} alt="chevron" />
-          </>
-        </WindowBloc>
-      </Reveal>
+      </div>
 
       {/*  BLOC BLEU 2    */}
+      <div  
+      id="Welcome"
+      >
       <Reveal
         top="18vw"
         right="5vw"
         animation={animation}
         transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
-      >
+        >
         <WindowBloc
           zIndex={20}
           theme="blue"
@@ -137,7 +120,7 @@ function App() {
           width={23}
           title={"WELCOME"}
           action={() => handleNewDiv(18, 5)}
-        >
+          >
           <>
             <p>Welcome to my Portfolio !</p>
           </>
@@ -146,6 +129,7 @@ function App() {
       {divList.map((div, index) => (
         <div key={index}>{div}</div>
       ))}
+      </div>
 
       {/*  CV BLANC    */}
       <Reveal
@@ -168,25 +152,6 @@ function App() {
         </WindowBloc>
       </Reveal>
       {/*  CV BLANC    */}
-      <Reveal
-        top="50vw"
-        left="27vw"
-        animation={animation}
-        transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
-      >
-        <WindowBloc
-          zIndex={70}
-          theme="black"
-          width={40}
-          title={"MINISHELL"}
-          action={() => alert("coucou")}
-        >
-          <>
-            <img src={cub3d}></img>
-            {/* <p>CURRICULUM VITAE</p> */}
-          </>
-        </WindowBloc>
-      </Reveal>
 
       {/*  MOHA PIXEL    */}
       <Reveal
@@ -212,11 +177,6 @@ function App() {
           delay: getRandomNumber(2),
         }}
       >
-        {/* <WindowBloc theme="black" width={40} title={"MY NAME IS"}>
-          <>
-            <h1 className="text-8xl">MOHAMED</h1>
-          </>
-        </WindowBloc> */}
         <img
           style={{ height: "17vh", zIndex: 30 }}
           src={welcome}
@@ -224,20 +184,20 @@ function App() {
         />
       </Reveal>
 
-      {/*  JUNIOR 42    */}
+      {/*  TERMINAL 42    */}
+      <div
+      id="Terminal"
+      >
+        
       <Reveal
         top="70vh"
         right="9vw"
         animation={newanimation}
         transition={{ duration: getRandomNumber(1), delay: getRandomNumber(1) }}
-      >
-        <Terminal
-          theme="black"
-          width={35}
-          title={"TERMINAL"}
         >
-        </Terminal>
+        <Terminal theme="black" width={35} title={"TERMINAL"}></Terminal>
       </Reveal>
+      </div>
 
       {/*  GAMIL    */}
       <Reveal

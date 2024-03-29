@@ -28,6 +28,12 @@
   }
 }
 
+#blackBloc, #Terminal, #Welcome {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 @keyframes invisibleAnimation {
   0% {
     opacity: 0;
@@ -38,12 +44,8 @@
 }
 
 #MargoBox {
-  /* font-family: "Pixelify Sans", sans-serif; */
   font-family: "Pixer", sans-serif;
-  /* font-family: "VT323", monospace; */
-  /* font-family: "PKMN", monospace; */
   color: pink;
-  /* animation: revealAnimation  cubic-bezier(0.5, 0, 0, 1) 1000ms 2000ms forwards; */
 }
 
 p {
@@ -52,16 +54,12 @@ p {
 
 body {
   font-family: "Pixer", sans-serif;
-  /* font-family: "Pixelify Sans", sans-serif; */
-  /* font-family: "VT323", monospace; */
-  /* font-family: "PKMN", monospace; */
   width: 100vw;
   height: 300vh;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
   background-color: #131417;
-  /* cursor: url(./assets/default_arrow.cur),; */
   cursor: default;
   user-select: none; /* Standard syntax */
 }
