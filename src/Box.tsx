@@ -4,11 +4,12 @@ import { useState } from "react";
 export const themes = {
   blue: {
     primary: "text-blue-700",
-    bg: "bg-blue-700/80",
+    bg: "bg-blue-700",
     bgs: "bg-white",
     border: "border-white",
     secondary: "text-white",
     svgcolor: "rgb(29 78 216)",
+
     main: "blue",
     second: "white"
   },
@@ -19,6 +20,7 @@ export const themes = {
     border: "border-black",
     secondary: "text-black",
     svgcolor: "white",
+
     main: "white",
     second: "black"
   },
@@ -33,33 +35,7 @@ export const themes = {
     main: "black",
     second: "white"
   },
-  thomas: {
-    primary: "text-red-700",
-    bg: "bg-red-700",
-    bgs: "bg-purple-700",
-    border: "border-purple-700",
-    secondary: "text-purple-700",
-    svgcolor: "red",
-  },
 };
-
-// function Box() {
-//   return (
-//     <>
-//       <WindowBloc
-//         theme="black"
-//         button={"Click me"}
-//         width={20}
-//         title={"PROFIL"}
-//       >
-//         <>
-//         <img src="https://cdn.intra.42.fr/users/3aed91771be50eea96087d8d49c58d40/mgamil.jpg" alt="moha" />
-//         <p>Hello world !!!</p>
-//         </>
-//         </WindowBloc>
-//     </>
-//   );
-// }
 
 interface SquareRectangleProps {
   theme: "blue" | "white" | "black";
@@ -70,7 +46,7 @@ interface SquareRectangleProps {
   children?: React.ReactNode;
   zIndex?: number;
   close?: boolean;
-  pad?: boolean | "p-10";
+  pad?: boolean | string;
 }
 
 const WindowBloc: React.FC<SquareRectangleProps> = ({

@@ -201,7 +201,7 @@ function App() {
           zIndex={10}
           theme="blue"
           width={20}
-          pad={false}
+          pad={"p-4"}
           title={"MGAMIL"}
         >
           <>
@@ -294,7 +294,7 @@ function App() {
         animation={animation}
         transition={{ duration: 2, delay: 0 }}
       >
-        <WindowBloc zIndex={10} theme="black" pad={false} title={"MGAMIL"}>
+        <WindowBloc zIndex={10} theme="black" pad={"p-4"} title={"MGAMIL"}>
           <>
             {/* <p>sQDSQD</p> */}
             <svg
