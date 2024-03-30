@@ -1,0 +1,42 @@
+/* COMPUTER */
+@media screen and (min-width: 768px) {
+  #ProfilePic {
+    animation: random 2s infinite;
+    top: 70vh;
+    width: 30rem;
+    right: 12rem;
+    position: absolute;
+  }
+
+  #AboutMe {
+    height: 70vh;
+  }
+
+  #Terminal {
+    position: absolute;
+    left: 5vw;
+    top: 115vh;
+  }
+}
+
+/* PHONE */
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+  #ProfilePic {
+    display: none;
+    animation: random 2s infinite;
+    width: 50vw;
+    position: absolute;
+    bottom: -25vh;
+    left: 20vw;
+    border-radius: 50%;
+  }
+
+  i {
+    font-size: 2rem;
+  }
+
+  #AboutMe {
+    display: none;
+  }
+
+}

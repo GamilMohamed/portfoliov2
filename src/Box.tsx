@@ -1,5 +1,33 @@
 import React, { useRef } from "react";
 import { useState } from "react";
+import styled from "styled-components";
+
+
+const BigBloc = styled.div<{ $width: string; $primary: string }>`
+  background-color: ${(props) => props.$primary};
+  width: ${(props) => props.$width};
+  transition: all 0.5s;
+  transform: rotate(90deg, 0);
+`;
+
+const TitleBloc = styled.div<{ $primary: string; $secondary: string }>`
+  display: flex;
+  justify-content: space-between;
+  background-color: ${(props) => props.$secondary};
+  color: ${(props) => props.$primary};
+  border-bottom-width: 8px;
+  border-color: ${(props) => props.$secondary};
+`;
+
+const DataBloc = styled.div<{ $primary: string; $secondary: string }>`
+  background-color: ${(props) => props.$primary};
+  color: ${(props) => props.$secondary};
+  border-bottom-width: 8px;
+  border-left-width: 8px;
+  border-right-width: 8px;
+  border-color: ${(props) => props.$secondary};
+`;
+
 
 export const themes = {
   blue: {
@@ -69,26 +97,10 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
     } else setButtonVisible(!buttonVisible);
   };
 
-  console.log("theme", theme);
   const { primary, bg, bgs, border, secondary, svgcolor } = themes[theme];
-  console.log(
-    "primary",
-    primary,
-    "bg",
-    bg,
-    "bgs",
-    bgs,
-    "border",
-    border,
-    "secondary",
-    secondary,
-    "svgcolor",
-    svgcolor
-  );
-  const ref = useRef<HTMLDivElement>(null);
+
   return (
     <div
-      ref={ref}
       id="MargoBox"
       className={`${bg} p-2`}
       style={{
@@ -119,16 +131,6 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
           strokeWidth="1"
           onClick={handleButtonClick}
         >
-          {/*
-              RECTANGLE 
-                <rect height="10" width="10" y="3" x="5" />
-                LINE
-                <line x1="5" y1="8" x2="15" y2="8" stroke={svgcolor} />
-                CROSS
-                <line x1="5" y1="3" x2="15" y2="13" stroke={svgcolor} />
-                <line x1="5" y1="13" x2="15" y2="3" stroke={svgcolor} />
-                
-              */}
           {/* MINUS */}
           {buttonVisible && !close && (
             <line x1="5" y1="8" x2="15" y2="8" stroke={svgcolor} />
@@ -152,7 +154,6 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
           flexDirection: "column",
           alignContent: "center",
           display: buttonVisible ? "flex" : "none",
-          // padding: "10px",
         }}
         className={`${bg} ${secondary} ${pad} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
       >

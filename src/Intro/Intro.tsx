@@ -21,7 +21,7 @@ function Intro() {
         >
           <WindowBloc
             zIndex={10}
-            theme="black"
+            theme="white"
             button={"Click moi"}
             title={"PROFILE"}
           >

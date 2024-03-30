@@ -1,5 +1,6 @@
 import LangBloc from "./LangBloc";
 import AboutMe from "./AboutMe";
+import "./aboutme.css"
 
 function Languages() {
   return (

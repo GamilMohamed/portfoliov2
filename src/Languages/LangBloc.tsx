@@ -3,9 +3,10 @@ import { Reveal } from "../test";
 
 const Logo = styled.div<{ $bg: string }>`
   background-color: ${(props) => props.$bg};
-  // font-size: 20vw;
-  // border-radius: 25%;
-  // width: 20%;
+  // &:hover {
+  //   transform: scale(1.2);
+  //   transition: transform 0.5s ease-in-out;
+  // }
 `;
 
 const colors = ["#2edaaa", "#f3a248", "#1e35ef", "#f3a248"];

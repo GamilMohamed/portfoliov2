@@ -9,25 +9,7 @@
     align-items: center;
   }
 
-  #ProfilePic {
-    animation: random 2s infinite;
-    top: 70vh;
-    width: 30rem;
-    right: 12rem;
-    position: absolute;
-  }
-
-  #AboutMe {
-    height:70vh;
-  }
-  /* #Arrow {
-    animation: bounce 2s infinite;
-  } */
   #blackBloc {
-    /* position: absolute;
-  top: 10vh;
-  right: 20vw;
-  width: 20vw; */
     position: absolute;
     top: 65vh;
     left: 6vw;
@@ -71,14 +53,6 @@
     z-index: 60;
   }
 
-  #Terminal {
-    position: absolute;
-    left: 5vw;
-    top: 115vh;
-    /* right: 2vw; */
-    /* width: 35vw; */
-  }
-
   #Gamilx {
     position: absolute;
     top: 50vh;
@@ -109,33 +83,7 @@
     transform: translate(-50%, -50%);
     z-index: 100;
   }
-  /* body { */
-  /* background-color: pink !important;  */
-  /* } */
 }
-
-/* IDK ? */
-/* @media (min-width: 992) {
-  /* #Welcome,
-  #Terminal,
-  #blackBloc {
-    display: none;
-  }
-  #CV {
-    position: absolute;
-    top: 65vh;
-    left: 5vw;
-  }
-  #FortyTwo {
-    right: 5vw;
-    width: 25vw;
-  }
-  #PixelMoha {
-    top: 10vh;
-    width: 35vw;
-  } */
-/* }  */
-/* */
 
 /* PHONE */
 @keyframes bounce {
@@ -174,39 +122,27 @@
     width: 100vw;
     align-items: center;
   }
+
   #CV {
     display: none;
     width: 12vw;
   }
   #FortyTwo {
     display: none;
-    /* position: absolute; */
   }
   #PixelMoha {
-    /* position: absolute; */
     width: 35vw;
   }
-  #Mohamed {
-    /* position: absolute; */
-  }
   #MohamedText {
-    /* position: absolute; */
     margin: 1rem;
     font-size: 4.1rem;
   }
   #Gamilx {
-    /* position: absolute; */
     z-index: 60;
   }
   #Gamil {
-    /* position: absolute; */
     font-size: 8rem;
     transform: translate(0, -50px);
-  }
-  #MargoBox {
-    /* display: block; */
-    /* position: absolute; */
-    /* display: none; */
   }
 
   #Arrow {
@@ -214,23 +150,5 @@
     position: absolute;
     bottom: 1vh;
     animation: bounce 2s infinite;
-  }
-
-  i {
-    font-size: 2rem;
-  }
-  #AboutMe {
-    display: none;
-  }
-
-  #ProfilePic { 
-    display: none;
-    animation: random 2s infinite;
-    width: 50vw;
-    position: absolute;
-    bottom: -25vh;
-    left: 20vw;
-    border-radius: 50%;
-    /* margin: 10 auto; */
   }
 }
