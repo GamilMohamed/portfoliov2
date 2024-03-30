@@ -1,20 +1,25 @@
 import Intro from "./Intro/Intro";
-// import Languages from "./Languages/Languages";
+import Languages from "./Languages/Languages";
 
 function App() {
   return (
     <>
-    <div style={{
-      backgroundColor: "",
+    <div
+    id="Intro"
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexWrap: "wrap",
+      // flexDirection: "column",
       color: "white",
       height: "100vh",
       width: "100vw",
-      display: "flex",
     }}>
-      </div>
       <Intro />
-  {/* <div style={{
-    backgroundColor: "pink",
+      </div>
+  <div style={{
+    backgroundColor: "red",
       color: "white",
       height: "100vh",
       width: "100vw",
@@ -24,7 +29,20 @@ function App() {
       alignItems: "center",
     }}>
     <Languages />
-     </div> */}
+     </div>
+  <div style={{
+    backgroundColor: "blue",
+      color: "white",
+      height: "30vh",
+      width: "100vw",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    }}>
+      <h1>PROJECTSSSSSSSSSSSSSSSSSsssssssss</h1>
+    {/* <Languages /> */}
+     </div>
     </>
   );
 }

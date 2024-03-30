@@ -6,7 +6,7 @@ import arrow from "../assets/arrow.svg";
 import pixelmoha from "../assets/gamil_pix.png";
 import "./intro.css";
 import RandomDiv from "./RandomDiv";
-import { animation, newanimation, normal, getRandomNumber } from "./IntroVars";
+import { animation, newanimation, getRandomNumber } from "./IntroVars";
 
 function Intro() {
   return (
@@ -44,8 +44,9 @@ function Intro() {
             duration: 0.5,
             delay: 0.5,
           }}
-        >
+          >
           <WindowBloc
+            pad={"p-4"}
             zIndex={30}
             theme="white"
             button={"READ"}
@@ -53,7 +54,7 @@ function Intro() {
             action={() => alert("coucou")}
           >
             <>
-              <p>CURRICULUM VITAE</p>
+              <p className="textbigscreen" >Click to see my CV</p>
             </>
           </WindowBloc>
         </Reveal>
@@ -65,7 +66,7 @@ function Intro() {
 		hidden: { opacity: 0, x: 0},
 		visible: { opacity: 0.8, x: 0},
 		}} transition={{ duration: 3, delay: 0.2 }}>
-          <WindowBloc zIndex={10} theme="blue" pad={"p-4"} title={"MGAMIL"}>
+          <WindowBloc zIndex={10} theme="blue" pad={"p-4"} title={"MOI"}>
             <>
               <img src={pixelmoha} alt="moha" />
             </>
@@ -76,9 +77,12 @@ function Intro() {
       {/*  MOHAMED    */}
       <div id="Mohamed">
         <Reveal
-          animation={normal}
+          animation={{
+			hidden: { opacity: 0, scale: 0.5},
+			visible: { opacity: 1,scale: 1},
+		  }}
           transition={{
-            duration: 0.6,
+            duration: 0.3,
             delay: 1,
           }}
         >
@@ -90,7 +94,8 @@ function Intro() {
           >
             <>
               <p
-                className="text-9xl"
+                id="MohamedText"
+                // className="text-9xl"
                 style={{ transform: "translate(0 , -7px)" }}
               >
                 MOHAMED
@@ -125,8 +130,6 @@ function Intro() {
           <div>
             <h1
               id="Gamil"
-              className="text-white"
-              style={{ fontSize: "15rem", zIndex: 30 }}
             >
               GAMIL
             </h1>
@@ -139,7 +142,7 @@ function Intro() {
         <Reveal animation={animation} transition={{ duration: 2, delay: 0 }}>
           <WindowBloc theme="black" pad={"p-4"} title={"MY SCHOOL"}>
             <>
-              <p>Student at </p>
+              <p>Student at</p>
               <img width={"600px"} height="600px" src={FortyTwoSVG} alt="42" />
             </>
           </WindowBloc>

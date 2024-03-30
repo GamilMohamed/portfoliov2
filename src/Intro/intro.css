@@ -1,95 +1,163 @@
-#blackBloc {
-  /* position: absolute;
+/* COMPUTER ONLY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+@media screen and (min-width: 768px){
+  
+  #blackBloc {
+    /* position: absolute;
   top: 10vh;
   right: 20vw;
   width: 20vw; */
-  position: absolute;
-  top: 65vh;
-  left: 6vw;
-  z-index: 50;
-  width: 20vw;
+    position: absolute;
+    top: 65vh;
+    left: 6vw;
+    z-index: 50;
+    width: 20vw;
+  }
+
+  #MohamedText {
+    font-size: 8rem;
+    line-height: 1;
+  }
+
+  #Welcome {
+    position: absolute;
+    top: 18vh;
+    right: 5vw;
+    width: 23vw;
+    z-index: 30;
+  }
+
+  #CV {
+    position: absolute;
+    top: 5vh;
+    left: 27vw;
+    width: 20vw;
+  }
+
+  #PixelMoha {
+    position: absolute;
+    top: 23vh;
+    left: 13vw;
+    width: 20vw;
+    z-index: 45;
+  }
+
+  #Mohamed {
+    position: absolute;
+    top: 40vh;
+    left: 28.5vw;
+    width: 20vw;
+    z-index: 60;
+  }
+
+  #Terminal {
+    position: absolute;
+    top: 60vh;
+    right: 2vw;
+    width: 35vw;
+  }
+
+  #Gamilx {
+    position: absolute;
+    top: 50vh;
+    left: 28.5vw;
+    width: 20vw;
+    z-index: 60;
+  }
+
+  #Gamil {
+    filter: drop-shadow(5px 5px black);
+    font-size: 15rem;
+  }
+
+  #FortyTwo {
+    position: absolute;
+    top: 2vh;
+    right: 27vw;
+    width: 15vw;
+    z-index: 20;
+  }
+
+  #Arrow {
+    position: absolute;
+    left: 50%;
+    top: 92%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+  }
+  /* body { */
+    /* background-color: pink !important;  */
+  /* } */
 }
 
-#Welcome {
-  position: absolute;
-  top: 18vh;
-  right: 5vw;
-  width: 23vw;
-  z-index: 30;
+
+/* IDK ? */
+/* @media (min-width: 992) {
+  /* #Welcome,
+  #Terminal,
+  #blackBloc {
+    display: none;
+  }
+  #CV {
+    position: absolute;
+    top: 65vh;
+    left: 5vw;
+  }
+  #FortyTwo {
+    right: 5vw;
+    width: 25vw;
+  }
+  #PixelMoha {
+    top: 10vh;
+    width: 35vw;
+  } */
+/* }  */
+/* */
+
+/* PHONE */
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+
+  #Welcome,
+  #Terminal,
+  #blackBloc {
+    display: none;
+  }
+  #Intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #CV {
+    display: none;
+    width: 12vw;
+  }
+  #FortyTwo {
+    display: none;
+    /* position: absolute; */
+  }
+  #PixelMoha {
+    /* position: absolute; */
+    width: 35vw;
+  }
+  #Mohamed {
+    /* position: absolute; */
+  }
+  #MohamedText {
+    /* position: absolute; */
+    margin: 1rem;
+    font-size: 4.1rem;
+  }
+  #Gamilx {
+    /* position: absolute; */
+    z-index: 60;
+  }
+  #Gamil {
+    /* position: absolute; */
+    font-size: 8rem;
+  }
+  #MargoBox {
+    /* display: block; */
+    /* position: absolute; */
+    /* display: none; */
+  }
 }
-
-#CV {
-  position: absolute;
-  top: 5;
-  left: 27vw;
-  width: 20vw;
-}
-
-#PixelMoha {
-  position: absolute;
-  top: 23vh;
-  left: 13vw;
-  width: 20vw;
-  z-index: 45;
-}
-
-#Mohamed {
-  position: absolute;
-  top: 40vh;
-  left: 30vw;
-  width: 20vw;
-  z-index: 60;
-}
-
-#Terminal {
-  position: absolute;
-  top: 60vh;
-  right: 2vw;
-  width: 35vw;
-}
-
-#Gamilx {
-  position: absolute;
-  top: 50vh;
-  left: 30vw;
-  width: 20vw;
-  z-index: 60;
-
-  filter: drop-shadow(5px 5px black);
-}
-
-#FortyTwo {
-  position: absolute;
-  top: 2vh;
-  right: 25vw;
-  width: 15vw;
-  z-index: 20;
-}
-
-#Arrow {
-  position: absolute;
-  left: 50%;
-  top: 92%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-}
-
-
-@media (max-width: 1000px) {
-  #Welcome, #Terminal, #blackBloc{
-     display: none;
-   }
-   #CV {
-     position: absolute;
-     top: 65vh;
-     left: 5vw;
-   }
-   #FortyTwo {
-     width: 25vw;
-   }
-   #PixelMoha {
-     top: 10vh;
-     width: 35vw;
-   }
- }
- 

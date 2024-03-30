@@ -11,7 +11,7 @@ export const themes = {
     svgcolor: "rgb(29 78 216)",
 
     main: "blue",
-    second: "white"
+    second: "white",
   },
   white: {
     primary: "text-white",
@@ -22,7 +22,7 @@ export const themes = {
     svgcolor: "white",
 
     main: "white",
-    second: "black"
+    second: "black",
   },
   black: {
     primary: "text-black",
@@ -33,7 +33,7 @@ export const themes = {
     svgcolor: "black",
 
     main: "black",
-    second: "white"
+    second: "white",
   },
 };
 
@@ -51,7 +51,7 @@ interface SquareRectangleProps {
 
 const WindowBloc: React.FC<SquareRectangleProps> = ({
   theme,
-  width = "max-content",
+  width = "min-content",
   button,
   title,
   children,

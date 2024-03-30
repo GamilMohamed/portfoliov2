@@ -39,7 +39,7 @@ export const Reveal = ({ children, width = "fit-content", bottom, top, right, le
   }, [isInView]);
 
   return (
-    <div ref={ref} style={{ position:"absolute", width, bottom, top, right, left, overflow:"hidden" }}>
+    <div ref={ref} style={{ width, bottom, top, right, left, overflow:"hidden" }}>
       <motion.div 
       variants={{
         hidden: animation.hidden,
