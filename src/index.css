@@ -5,35 +5,13 @@
 @font-face {
   font-family: "Pixer";
   src: url("./assets/Pixer-Regular.woff");
+  /* src: url("./assets/thomas.otf"); */
 }
 
 @font-face {
-  font-family: "Pixer2";
-  src: url("./assets/Pixer-Regular.woff2");
+  font-family: "Thomas";
+  src: url("./assets/thomas.otf");
 }
-
-@font-face {
-  font-family: "PKMN";
-  src: url("./assets/PKMN.otf");
-}
-
-@keyframes revealAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) rotateX(100deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotateX(0deg);
-  }
-}
-/* 
-#blackBloc,
-#Terminal,
-#Welcome {
-  
-} */
-
 
 #MargoBox {
   font-family: "Pixer", sans-serif;
@@ -58,4 +36,54 @@ body {
 
 .button {
   cursor: pointer;
+}
+
+#LangBloc {
+  background-color: #131417;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: linear-gradient(
+    180deg,
+    rgba(19, 20, 23, 1) 25%,
+    rgba(255, 255, 255, 1) 21%
+  );
+  width: 100%;
+}
+
+#Logo {
+  /* max-width: 20%; */
+}
+
+i {
+  color: white;
+}
+
+#myman {
+  /* margin: 0.1rem auto; */
+  font-size: 6vw;
+  border-radius: 15%;
+  display: flex;
+  padding: 0.5em;
+  margin: 0.4em;
+  color: white;
+}
+
+@keyframes random {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  75% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

@@ -1,6 +1,28 @@
 /* COMPUTER ONLY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-@media screen and (min-width: 768px){
-  
+@media screen and (min-width: 768px) {
+  #Intro {
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+  }
+
+  #ProfilePic {
+    animation: random 2s infinite;
+    top: 70vh;
+    width: 30rem;
+    right: 12rem;
+    position: absolute;
+  }
+
+  #AboutMe {
+    height:70vh;
+  }
+  /* #Arrow {
+    animation: bounce 2s infinite;
+  } */
   #blackBloc {
     /* position: absolute;
   top: 10vh;
@@ -51,9 +73,10 @@
 
   #Terminal {
     position: absolute;
-    top: 60vh;
-    right: 2vw;
-    width: 35vw;
+    left: 5vw;
+    top: 115vh;
+    /* right: 2vw; */
+    /* width: 35vw; */
   }
 
   #Gamilx {
@@ -66,7 +89,9 @@
 
   #Gamil {
     filter: drop-shadow(5px 5px black);
-    font-size: 15rem;
+    font-size: 12rem;
+    transform: translate(0, 29.1px);
+    font-family: "Thomas";
   }
 
   #FortyTwo {
@@ -85,10 +110,9 @@
     z-index: 100;
   }
   /* body { */
-    /* background-color: pink !important;  */
+  /* background-color: pink !important;  */
   /* } */
 }
-
 
 /* IDK ? */
 /* @media (min-width: 992) {
@@ -114,17 +138,40 @@
 /* */
 
 /* PHONE */
-@media only screen and (min-width: 200px) and (max-width: 767px) {
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
 
+@media only screen and (min-width: 200px) and (max-width: 767px) {
+  body {
+    overflow-x: none;
+  }
   #Welcome,
   #Terminal,
   #blackBloc {
     display: none;
   }
+
   #Intro {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    height: 80vh;
+    width: 100vw;
     align-items: center;
   }
   #CV {
@@ -154,10 +201,36 @@
   #Gamil {
     /* position: absolute; */
     font-size: 8rem;
+    transform: translate(0, -50px);
   }
   #MargoBox {
     /* display: block; */
     /* position: absolute; */
     /* display: none; */
+  }
+
+  #Arrow {
+    display: none;
+    position: absolute;
+    bottom: 1vh;
+    animation: bounce 2s infinite;
+  }
+
+  i {
+    font-size: 2rem;
+  }
+  #AboutMe {
+    display: none;
+  }
+
+  #ProfilePic { 
+    display: none;
+    animation: random 2s infinite;
+    width: 50vw;
+    position: absolute;
+    bottom: -25vh;
+    left: 20vw;
+    border-radius: 50%;
+    /* margin: 10 auto; */
   }
 }

@@ -54,7 +54,7 @@ export const Reveal = ({ children, width = "fit-content", bottom, top, right, le
       >
         {children}
       </motion.div>
-      {/* <motion.div
+      <motion.div
         variants={{
           hidden: { left: 0 },
           visible: { left: "100%" },
@@ -70,10 +70,10 @@ export const Reveal = ({ children, width = "fit-content", bottom, top, right, le
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(255, 255, 5, 1)",
+          // backgroundColor: "rgba(255, 255, 5, 1)",
           zIndex: 10,
         }}
-      /> */}
+      />
     </div>
   );
 }

@@ -154,7 +154,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
           display: buttonVisible ? "flex" : "none",
           // padding: "10px",
         }}
-        className={`${bg} ${secondary}  ${pad} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
+        className={`${bg} ${secondary} ${pad} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
       >
         {children}
         {button && (

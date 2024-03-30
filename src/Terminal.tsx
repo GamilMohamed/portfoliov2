@@ -8,14 +8,14 @@ interface TerminalProps {
   title: string;
 }
 
-const BigBloc = styled.div<{ $width: string, $primary: string }>`
+const BigBloc = styled.div<{ $width: string; $primary: string }>`
   background-color: ${(props) => props.$primary};
   width: ${(props) => props.$width};
   transition: all 0.5s;
   transform: rotate(90deg, 0);
 `;
 
-const TitleBloc = styled.div<{ $primary: string, $secondary: string}>`
+const TitleBloc = styled.div<{ $primary: string; $secondary: string }>`
   display: flex;
   justify-content: space-between;
   background-color: ${(props) => props.$secondary};
@@ -24,7 +24,7 @@ const TitleBloc = styled.div<{ $primary: string, $secondary: string}>`
   border-color: ${(props) => props.$secondary};
 `;
 
-const DataBloc = styled.div<{ $primary: string, $secondary: string}>`
+const DataBloc = styled.div<{ $primary: string; $secondary: string }>`
   background-color: ${(props) => props.$primary};
   color: ${(props) => props.$secondary};
   border-bottom-width: 8px;
@@ -55,7 +55,6 @@ const presentation: string[] = [
 
 const prompt = "Shell> ";
 
-
 const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [history, setHistory] = useState<string[]>(presentation);
@@ -75,11 +74,10 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
 
     switch (cmd) {
       case "ls":
-        setHistory((prev) =>
-          [
-            ...prev, myFiles.map((file) => " " + file).join(" "),
-          ]
-        );
+        setHistory((prev) => [
+          ...prev,
+          myFiles.map((file) => " " + file).join(" "),
+        ]);
         break;
       case "clear":
         setHistory([]);
@@ -97,30 +95,22 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
         setFiles((prev) => prev.filter((file) => file !== args[0]));
         break;
       case "help":
-        setHistory((prev) =>
-          [
-            ...prev,
-            prompt +
-              "ls, clear, whoami, echo, touch, rm, man",
-          ]
-        );
+        setHistory((prev) => [
+          ...prev,
+          prompt + "ls, clear, whoami, echo, touch, rm, man",
+        ]);
         break;
-        case "whoami":
-          setHistory(presentation);
-          break;
-        
-  case "man":
-    setHistory((prev) =>
-      [
-      ...prev,
-      prompt + commands[args[0]] || "no man page",
-      ]
-    );
-    break;
+      case "whoami":
+        setHistory(presentation);
+        break;
+      case "man":
+        setHistory((prev) => [
+          ...prev,
+          prompt + commands[args[0]] || "no man page",
+        ]);
+        break;
       default:
-        setHistory((prev) =>
-          [...prev, prompt + cmd + ": command not found"]
-        );
+        setHistory((prev) => [...prev, prompt + cmd + ": command not found"]);
     }
   };
 
@@ -133,95 +123,99 @@ const Terminal: React.FC<TerminalProps> = ({ theme, width, title }) => {
   };
 
   const { main, second } = themes[theme];
+  // if (bh) return (
+  //   );
   return (
-    <BigBloc
-    $primary={main}
-    $width={width + "vw"}
-      id="MargoBox"
-      className={`p-2`}
-    >
-      <TitleBloc
-      $primary={main}
-      $secondary={second}
-        className={`text-3xl px-2`}
-        onClick={() => setButtonVisible(!buttonVisible)}
+    <>
+      <BigBloc
+        $primary={main}
+        $width={width + "vw"}
+        id="MargoBox"
+        className={`p-2`}
       >
-        {title}
-        <svg
-          width="35px"
-          style={{ transform: "translate(0 , 2px)" }}
-          height="35px"
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke={main}
-          strokeWidth="1"
+        <TitleBloc
+          $primary={main}
+          $secondary={second}
+          className={`text-3xl px-2`}
+          onClick={() => setButtonVisible(!buttonVisible)}
         >
-          {/* MINUS */}
-          {(buttonVisible && (
-            <line x1="5" y1="8" x2="15" y2="8" stroke={main} />
-          )) || <rect height="10" width="10" y="3" x="5" />}
-        </svg>
-      </TitleBloc>
-      <DataBloc
-      $primary={main}
-      $secondary={second}
-        style={{
-          flexDirection: "column",
-          position: "relative",
-          display: buttonVisible ? "flex" : "none",
-          justifyContent: "flex-end",
-          // maxHeight: "8vh",
-          height: "20rem",
-          overflowX: "hidden",
-        }}
-        className={`text-2xl`}
-      >
-        <>
-          {history.map((command, index) => (
-            <p key={index}>{command}</p>
-          ))}
-          <span
+          {title}
+          <svg
+            width="35px"
+            style={{ transform: "translate(0 , 2px)" }}
+            height="35px"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke={main}
+            strokeWidth="1"
+          >
+            {/* MINUS */}
+            {(buttonVisible && (
+              <line x1="5" y1="8" x2="15" y2="8" stroke={main} />
+            )) || <rect height="10" width="10" y="3" x="5" />}
+          </svg>
+        </TitleBloc>
+        <DataBloc
+          $primary={main}
+          $secondary={second}
           style={{
-            backgroundColor: main,
+            flexDirection: "column",
+            position: "relative",
+            display: buttonVisible ? "flex" : "none",
+            justifyContent: "flex-end",
+            // maxHeight: "8vh",
+            height: "20rem",
+            overflowX: "hidden",
           }}
+          className={`text-2xl`}
+        >
+          <>
+            {history.map((command, index) => (
+              <p key={index}>{command}</p>
+            ))}
+            <span
+              style={{
+                backgroundColor: main,
+              }}
             >
-            Shell&gt;
-          </span>
-          <input
-            id="link"
-            value={inputValue}
-            onChange={handleInputChange}
-            className={`w-full`}
-            onKeyDown={(e: React.KeyboardEvent) => {
-              if (e.key === "Enter") {
-                handleHistory(inputValue);
-                setInputValue("");
-                setCount(1);
-              }
-              if (e.key === "ArrowUp" && history.length > 0) {
-                setCount(count + 1);
-                setInputValue(myCommands[myCommands.length - count]);
-              }
-              if (e.key === "ArrowDown" && history.length > 0) {
-                setCount(count - 1);
-                setInputValue(myCommands[myCommands.length - count - 1]);
-              }
-            }}
-            style={{
-              height: "2rem",
-              position: "absolute",
-              left: "68px",
-              width: "calc(100% - 68px)",
-              outline: "none",
-              border: "none",
-              textDecoration: "none",
-              color: second,
-              backgroundColor: main,
-            }}
-          />
-        </>
-      </DataBloc>
-    </BigBloc>
+              Shell&gt;
+            </span>
+            <input
+              id="link"
+              value={inputValue}
+              onChange={handleInputChange}
+              className={`w-full`}
+              onKeyDown={(e: React.KeyboardEvent) => {
+                if (e.key === "Enter") {
+                  handleHistory(inputValue);
+                  setInputValue("");
+                  setCount(1);
+                }
+                if (e.key === "ArrowUp" && history.length > 0) {
+                  setCount(count + 1);
+                  setInputValue(myCommands[myCommands.length - count]);
+                }
+                if (e.key === "ArrowDown" && history.length > 0) {
+                  setCount(count - 1);
+                  setInputValue(myCommands[myCommands.length - count - 1]);
+                }
+              }}
+              style={{
+                height: "2rem",
+                position: "absolute",
+                left: "68px",
+                width: "calc(100% - 68px)",
+                outline: "none",
+                border: "none",
+                textDecoration: "none",
+                color: second,
+                backgroundColor: main,
+              }}
+            />
+          </>
+        </DataBloc>
+      </BigBloc>
+    </>
   );
 };
 

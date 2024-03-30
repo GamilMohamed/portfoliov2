@@ -1,5 +1,4 @@
 import WindowBloc from "../Box";
-import Terminal from "../Terminal";
 import { Reveal } from "../test";
 import FortyTwoSVG from "../assets/42paris.svg";
 import arrow from "../assets/arrow.svg";
@@ -95,10 +94,10 @@ function Intro() {
             <>
               <p
                 id="MohamedText"
-                // className="text-9xl"
+                className="px-6"
                 style={{ transform: "translate(0 , -7px)" }}
               >
-                MOHAMED
+                Mohamed
               </p>
             </>
           </WindowBloc>
@@ -106,7 +105,7 @@ function Intro() {
       </div>
 
       {/*  TERMINAL */}
-      <div id="Terminal">
+      {/* <div id="Terminal">
         <Reveal
           animation={newanimation}
           transition={{
@@ -116,7 +115,7 @@ function Intro() {
         >
           <Terminal theme="black" width={35} title={"TERMINAL"}></Terminal>
         </Reveal>
-      </div>
+      </div> */}
 
       {/*  GAMIL    */}
       <div id="Gamilx">
