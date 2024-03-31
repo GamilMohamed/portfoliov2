@@ -1,76 +1,75 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
-
-const BigBloc = styled.div<{ $width: string; $primary: string }>`
-  background-color: ${(props) => props.$primary};
+const BigBloc = styled.div<{
+  $width: string;
+  $main: string;
+  $destroy: boolean;
+}>`
+  background-color: ${(props) => props.$main};
   width: ${(props) => props.$width};
   transition: all 0.5s;
   transform: rotate(90deg, 0);
+  display: ${(props) => (props.$destroy ? "none" : "")};
 `;
 
-const TitleBloc = styled.div<{ $primary: string; $secondary: string }>`
+const TitleBloc = styled.div<{ $main: string; $second: string }>`
   display: flex;
   justify-content: space-between;
-  background-color: ${(props) => props.$secondary};
-  color: ${(props) => props.$primary};
+  background-color: ${(props) => props.$second};
+  color: ${(props) => props.$main};
   border-bottom-width: 8px;
-  border-color: ${(props) => props.$secondary};
+  border-color: ${(props) => props.$second};
 `;
 
-const DataBloc = styled.div<{ $primary: string; $secondary: string }>`
-  background-color: ${(props) => props.$primary};
-  color: ${(props) => props.$secondary};
+const DataBloc = styled.div<{
+  $main: string;
+  $second: string;
+  $buttonvisible: boolean;
+}>`
+  background-color: ${(props) => props.$main};
+  color: ${(props) => props.$second};
   border-bottom-width: 8px;
   border-left-width: 8px;
   border-right-width: 8px;
-  border-color: ${(props) => props.$secondary};
+  border-color: ${(props) => props.$second};
+  display: ${(props) => (props.$buttonvisible ? "flex" : "none")};
+  flex-direction: column;
 `;
-
+const ButtonBloc = styled.button<{ $main: string; $secondary: string }>`
+  background-color: ${(props) => props.$main};
+  color: ${(props) => props.$secondary};
+  border: 4px solid ${(props) => props.$secondary};
+  margin: auto;
+  transform: translate(0, 10px);
+`;
 
 export const themes = {
   blue: {
-    primary: "text-blue-700",
-    bg: "bg-blue-700",
-    bgs: "bg-white",
-    border: "border-white",
-    secondary: "text-white",
-    svgcolor: "rgb(29 78 216)",
-
-    main: "blue",
+    main: "rgb(29 78 216)",
     second: "white",
   },
   white: {
-    primary: "text-white",
-    bg: "bg-white",
-    bgs: "bg-black",
-    border: "border-black",
-    secondary: "text-black",
-    svgcolor: "white",
-
     main: "white",
     second: "black",
   },
   black: {
-    primary: "text-black",
-    bg: "bg-black",
-    bgs: "bg-white",
-    border: "border-white",
-    secondary: "text-white",
-    svgcolor: "black",
-
     main: "black",
+    second: "white",
+  },
+  red: {
+    main: "red",
     second: "white",
   },
 };
 
 interface SquareRectangleProps {
-  theme: "blue" | "white" | "black";
+  theme: "blue" | "white" | "black" | "red";
   width?: number;
   title: string;
   button?: string;
-  action?: () => void | undefined;
+  action?: () => void | undefined | any;
   children?: React.ReactNode;
   zIndex?: number;
   close?: boolean;
@@ -84,9 +83,8 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
   title,
   children,
   action,
-  zIndex,
   close,
-  pad = "p-10",
+  pad = "p-6",
 }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [visible, setVisible] = useState(true);
@@ -97,25 +95,17 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
     } else setButtonVisible(!buttonVisible);
   };
 
-  const { primary, bg, bgs, border, secondary, svgcolor } = themes[theme];
+  const { main, second } = themes[theme];
 
   return (
-    <div
+    <BigBloc
+      $main={main}
+      $destroy={!visible}
+      $width={width + "vw"}
       id="MargoBox"
-      className={`${bg} p-2`}
-      style={{
-        zIndex: zIndex,
-        width: `${width}vw`,
-        transition: "all 0.5s",
-        transform: "rotate(90deg, 0)",
-        display: visible ? "" : "none",
-      }}
+      className="p-2"
     >
-      <div
-        style={{ display: "flex", justifyContent: "space-between" }}
-        className={`text-3xl px-2 ${bgs} ${primary} border ${border} border-b-8 `}
-        // onClick={handleButtonClick}
-      >
+      <TitleBloc $main={main} $second={second} className={`text-3xl px-2`}>
         {title}
         <svg
           width="35px"
@@ -125,21 +115,21 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
           fill="none"
-          stroke={svgcolor}
+          stroke={main}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1"
-          onClick={handleButtonClick}
+            onClick={handleButtonClick}
         >
           {/* MINUS */}
           {buttonVisible && !close && (
-            <line x1="5" y1="8" x2="15" y2="8" stroke={svgcolor} />
+            <line x1="5" y1="8" x2="15" y2="8" stroke={main} />
           )}
           {/* CROSS */}
           {buttonVisible && close && (
             <>
-              <line x1="5" y1="3" x2="15" y2="13" stroke={svgcolor} />
-              <line x1="5" y1="13" x2="15" y2="3" stroke={svgcolor} />
+              <line x1="5" y1="3" x2="15" y2="13" stroke={main} />
+              <line x1="5" y1="13" x2="15" y2="3" stroke={main} />
             </>
           )}
           {/* RECTANGLE */}
@@ -147,32 +137,26 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
             <rect height="10" width="10" y="3" x="5" />
           )}
         </svg>
-      </div>
-      <div
-        style={{
-          justifyContent: "center",
-          flexDirection: "column",
-          alignContent: "center",
-          display: buttonVisible ? "flex" : "none",
-        }}
-        className={`${bg} ${secondary} ${pad} border ${border} border-b-8 border-l-8 border-r-8 text-2xl`}
+      </TitleBloc>
+      <DataBloc
+        $main={main}
+        $second={second}
+        $buttonvisible={buttonVisible}
+        className={`${pad} text-2xl`}
       >
         {children}
         {button && (
-          <div
-            style={{
-              color: secondary,
-              margin: "auto",
-              transform: "translate(0, 10px)",
-            }}
+          <ButtonBloc
+            $main={main}
+            $secondary={second}
             onClick={action}
-            className={`${border} border-4 py-2 px-6 button`}
+            className="py-2 px-6"
           >
             <p>{button}</p>
-          </div>
+          </ButtonBloc>
         )}
-      </div>
-    </div>
+      </DataBloc>
+    </BigBloc>
   );
 };
 

@@ -1,0 +1,11 @@
+#Projets {
+  background-color: pink;
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-items: center;
+  width: 30vw;
+}

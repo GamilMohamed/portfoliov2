@@ -1,47 +1,49 @@
 import styled from "styled-components";
 import { Reveal } from "../test";
 
-const Logo = styled.div<{ $bg: string }>`
+const Logo = styled.div<{ $bg: string}>`
   background-color: ${(props) => props.$bg};
-  // &:hover {
-  //   transform: scale(1.2);
-  //   transition: transform 0.5s ease-in-out;
-  // }
 `;
 
-const colors = ["#2edaaa", "#f3a248", "#1e35ef", "#f3a248"];
-const names = [
-  "react",
-  "python",
-  "docker",
-  "typescript",
-  "c",
-  "nestjs",
-  "git",
-  "linux",
-];
+const namesntype: { [key: string]: string } = {
+  react: "lib",
+  python: "lang",
+  docker: "infra",
+  c: "lang",
+  bash: "infra",
+  nestjs: "lib",
+  git: "infra",
+  django: "lib",
+  typescript: "lang",
+  postgresql: "infra",
+  vscode: "infra",
+};
 
+const keysToLoop: string[] = Object.keys(namesntype);
+
+const colorsfromtype: { [key: string]: string } = {
+  lang: "#9d44b5",
+  lib: "#b5446e",
+  infra: "#177e89",
+};
 
 function LangBloc() {
+
   return (
-    <div
-      style={
-        {
-          // maxWidth: "fit-content",
-          // marginLeft: "auto",
-          // marginRight: "auto",
-        }
-      }
-    >
+    <div>
       <div id="LangBloc">
-        {names.map((name, index) => (
-            <Reveal animation={{
-            hidden: { scale: 0},
-            visible: {  scale: 1},
-            }} transition={{ duration: 1, delay: index / 4 }}>
-          <Logo id="myman" $bg={colors[index % 4]}>
-            <i className={`devicon-${name}-plain`}></i>
-          </Logo>
+        {keysToLoop.map((name, index) => (
+          <Reveal
+            animation={{
+              hidden: { scale: 0 },
+              visible: { scale: 1 },
+            }}
+            transition={{ duration: 1, delay: index/10 }}
+          >
+            <Logo id="myman" $bg={colorsfromtype[namesntype[name]]}>
+              <i className={`devicon-${name}-plain`}></i>
+              <p>{name}</p>
+            </Logo>
           </Reveal>
         ))}
       </div>

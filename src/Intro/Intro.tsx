@@ -20,10 +20,10 @@ function Intro() {
           }}
         >
           <WindowBloc
-            zIndex={10}
             theme="white"
             button={"Click moi"}
             title={"PROFILE"}
+            // action={() => alert("coucou")}
           >
             <>
               <p>Hello world !!!</p>
@@ -43,17 +43,16 @@ function Intro() {
             duration: 0.5,
             delay: 0.5,
           }}
-          >
+        >
           <WindowBloc
             pad={"p-4"}
-            zIndex={30}
             theme="white"
             button={"READ"}
             title={"CV"}
-            action={() => alert("coucou")}
+            action={() => (location.href = "src/assets/resume.pdf")}
           >
             <>
-              <p className="textbigscreen" >Click to see my CV</p>
+              <p className="textbigscreen">Click to see my CV</p>
             </>
           </WindowBloc>
         </Reveal>
@@ -61,10 +60,13 @@ function Intro() {
 
       {/*  MOHA PIXEL    */}
       <div id="PixelMoha">
-        <Reveal animation={{
-		hidden: { opacity: 0, x: 0},
-		visible: { opacity: 0.8, x: 0},
-		}} transition={{ duration: 3, delay: 0.2 }}>
+        <Reveal
+          animation={{
+            hidden: { opacity: 0, x: 0 },
+            visible: { opacity: 0.8, x: 0 },
+          }}
+          transition={{ duration: 3, delay: 0.2 }}
+        >
           <WindowBloc zIndex={10} theme="blue" pad={"p-4"} title={"MOI"}>
             <>
               <img src={pixelmoha} alt="moha" />
@@ -77,9 +79,9 @@ function Intro() {
       <div id="Mohamed">
         <Reveal
           animation={{
-			hidden: { opacity: 0, scale: 0.5},
-			visible: { opacity: 1,scale: 1},
-		  }}
+            hidden: { opacity: 0, scale: 0.5 },
+            visible: { opacity: 1, scale: 1 },
+          }}
           transition={{
             duration: 0.3,
             delay: 1,
@@ -127,11 +129,7 @@ function Intro() {
           }}
         >
           <div>
-            <h1
-              id="Gamil"
-            >
-              GAMIL
-            </h1>
+            <h1 id="Gamil">GAMIL</h1>
           </div>
         </Reveal>
       </div>

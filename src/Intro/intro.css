@@ -35,6 +35,7 @@
     top: 5vh;
     left: 27vw;
     width: 20vw;
+    z-index: 90;
   }
 
   #PixelMoha {
