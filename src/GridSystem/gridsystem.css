@@ -1,0 +1,31 @@
+#bigboite {
+  width: 100%;
+  height: 100vh;
+  /* background-color: red; */
+}
+
+#boite {
+  /* width: 100px; */
+  /* height: 100px; */
+  /* width:calc(95vw / 6); */
+}
+
+
+.one {
+
+}
+
+#CV {
+  transform: translate(-50px);
+}
+
+#FortyTwo {
+  width: 50%;
+}
+
+.two {
+	background-color: red !important;
+	display: flex;
+	justify-content: end;
+}
+

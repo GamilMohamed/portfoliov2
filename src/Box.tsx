@@ -101,7 +101,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
     <BigBloc
       $main={main}
       $destroy={!visible}
-      $width={width + "vw"}
+      // $width={width + "vw"}
       id="MargoBox"
       className="p-2"
     >

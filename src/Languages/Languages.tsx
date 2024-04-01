@@ -1,6 +1,6 @@
 import LangBloc from "./LangBloc";
 import AboutMe from "./AboutMe";
-// import Projets from "./Projets";
+import Projets from "./Projets";
 import "./aboutme.css"
 
 function Languages() {
@@ -8,7 +8,7 @@ function Languages() {
 	<div>
 		<AboutMe/>
 		<LangBloc/>
-		{/* <Projets/> */}
+		<Projets/>
 	</div>
   );
 }

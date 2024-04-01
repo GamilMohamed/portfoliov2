@@ -1,21 +1,42 @@
 /* COMPUTER */
 @media screen and (min-width: 768px) {
   #ProfilePic {
+    /* transform: rotate(0deg); */
+    width: 20rem;
+    /* transform: translate(0, -190px); */
     animation: random 2s infinite;
-    top: 70vh;
-    width: 30rem;
-    right: 12rem;
-    position: absolute;
+    /* top: 70vh; */
+    /* right: 12rem; */
+    /* position: absolute; */
+  }
+
+  #ProfileNcv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
   }
 
   #AboutMe {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     height: 70vh;
+    /* background-color: chocolate; */
   }
 
   #Terminal {
-    position: absolute;
-    left: 5vw;
-    top: 115vh;
+    /* position: absolute; */
+    /* left: 5vw; */
+    /* top: 115vh; */
+  }
+
+  #CV {
+    /* position: absolute; */
+    /* top: 5vh; */
+    /* left: 27vw; */
+    width: 200px;
+    z-index: 90;
   }
 }
 
@@ -38,5 +59,4 @@
   #AboutMe {
     display: none;
   }
-
 }

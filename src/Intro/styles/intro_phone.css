@@ -1,0 +1,64 @@
+/* PHONE */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  body {
+    background-color: blue !important;
+    overflow-x: none;
+  }
+  
+  #Welcome,
+  #Terminal,
+  #blackBloc {
+    display: none;
+  }
+
+  #Intro {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    height: 80vh;
+    width: 100vw;
+    align-items: center;
+  }
+
+  #CV {
+    display: none;
+    width: 12vw;
+  }
+  #FortyTwo {
+    display: none;
+  }
+  #PixelMoha {
+    width: 35vw;
+  }
+  #MohamedText {
+    margin: 1rem;
+    font-size: 4.1rem;
+  }
+  #Gamilx {
+    z-index: 60;
+  }
+  #Gamil {
+    font-size: 8rem;
+    transform: translate(0, -50px);
+  }
+
+  #Arrow {
+    display: none;
+    position: absolute;
+    bottom: 1vh;
+    animation: bounce 2s infinite;
+  }
+}
+
+
+/*
+
+  320px — 480px: Mobile devices
+  481px — 768px: iPads, Tablets
+  769px — 1024px: Small screens, laptops
+  1025px — 1200px: Desktops, large screens
+  1201px and more —  Extra large screens, TV
+
+*/

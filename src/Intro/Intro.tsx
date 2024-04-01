@@ -3,11 +3,19 @@ import { Reveal } from "../test";
 import FortyTwoSVG from "../assets/42paris.svg";
 import arrow from "../assets/arrow.svg";
 import pixelmoha from "../assets/gamil_pix.png";
-import "./intro.css";
+import "./styles/intro.css";
+import "./styles/intro_phone.css";
+import "./styles/intro_tablet.css";
 import RandomDiv from "./RandomDiv";
 import { animation, newanimation, getRandomNumber } from "./IntroVars";
+import { useRef } from "react";
+import { scrollToElement } from "../App";
 
-function Intro() {
+interface IProps {
+  refx: React.RefObject<HTMLDivElement>;
+}
+
+function Intro({ refx }: IProps) {
   return (
     <>
       {/*  BLOC NOIR 1    */}
@@ -20,14 +28,15 @@ function Intro() {
           }}
         >
           <WindowBloc
-            theme="white"
-            button={"Click moi"}
+            theme="blue"
+            button={"OK"}
             title={"PROFILE"}
             // action={() => alert("coucou")}
+            action={() => scrollToElement(refx)}
           >
             <>
-              <p>Hello world !!!</p>
-              <p>Comment ca va ?</p>
+              <p>Welcome to my portfolio !</p>
+      			  <p>Scroll to see my job!</p>
             </>
           </WindowBloc>
         </Reveal>
@@ -35,8 +44,9 @@ function Intro() {
 
       {/*  BLOC BLEU 2    */}
       <RandomDiv />
+
       {/*  CV BLANC    */}
-      <div id="CV">
+      {/* <div id="CV">
         <Reveal
           animation={animation}
           transition={{
@@ -56,10 +66,11 @@ function Intro() {
             </>
           </WindowBloc>
         </Reveal>
-      </div>
+      </div> */}
 
       {/*  MOHA PIXEL    */}
-      <div id="PixelMoha">
+      <div id="PixelMoha"
+      >
         <Reveal
           animation={{
             hidden: { opacity: 0, x: 0 },
@@ -104,34 +115,21 @@ function Intro() {
             </>
           </WindowBloc>
         </Reveal>
-      </div>
 
-      {/*  TERMINAL */}
-      {/* <div id="Terminal">
-        <Reveal
-          animation={newanimation}
-          transition={{
-            duration: getRandomNumber(1),
-            delay: getRandomNumber(1),
-          }}
-        >
-          <Terminal theme="black" width={35} title={"TERMINAL"}></Terminal>
-        </Reveal>
-      </div> */}
-
-      {/*  GAMIL    */}
-      <div id="Gamilx">
-        <Reveal
-          animation={animation}
-          transition={{
-            duration: 0.4,
-            delay: 1.2,
-          }}
-        >
-          <div>
-            <h1 id="Gamil">GAMIL</h1>
-          </div>
-        </Reveal>
+        {/*  GAMIL    */}
+        <div id="Gamilx">
+          <Reveal
+            animation={animation}
+            transition={{
+              duration: 0.4,
+              delay: 1.2,
+            }}
+          >
+            <div>
+              <h1 id="Gamil">GAMIL</h1>
+            </div>
+          </Reveal>
+        </div>
       </div>
 
       {/*  42    */}

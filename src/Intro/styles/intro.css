@@ -1,28 +1,20 @@
 /* COMPUTER ONLY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
+  body {
+    /* background-color: pink !important; */
+  }
+
   #Intro {
+    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    align-items: center;
     color: white;
     height: 100vh;
     width: 100vw;
-    align-items: center;
   }
 
   #blackBloc {
-    position: absolute;
-    top: 65vh;
-    left: 6vw;
-    z-index: 50;
-    width: 20vw;
-  }
-
-  #MohamedText {
-    font-size: 8rem;
-    line-height: 1;
-  }
-
-  #Welcome {
     position: absolute;
     top: 18vh;
     right: 5vw;
@@ -30,64 +22,90 @@
     z-index: 30;
   }
 
-  #CV {
+  #MohamedText {
+    font-size: 10rem;
+    line-height: 1;
+  }
+
+  #Welcome {
+    position: absolute;
+    top: 65vh;
+    left: 6vw;
+    z-index: 50;
+    width: 20vw;
+    /* position: absolute;
+    top: 18vh;
+    right: 5vw;
+    width: 23vw;
+    z-index: 30; */
+  }
+
+  /* #CV {
     position: absolute;
     top: 5vh;
     left: 27vw;
     width: 20vw;
     z-index: 90;
-  }
+  } */
 
   #PixelMoha {
     position: absolute;
     top: 23vh;
     left: 13vw;
-    width: 20vw;
+    width: 25em;
     z-index: 45;
   }
 
   #Mohamed {
-    position: absolute;
-    top: 40vh;
-    left: 28.5vw;
-    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* position: absolute; */
+    /* top: 40vh; */
+    /* left: 35.5vw; */
+    /* width: 20vw; */
     z-index: 60;
   }
 
   #Gamilx {
-    position: absolute;
-    top: 50vh;
-    left: 28.5vw;
-    width: 20vw;
+    /* background-color: rgba(0, 0, 150, 0.5); */
+    line-height: 1;
+    /* position: absolute; */
+    /* top: 50vh; */
+    /* left: 35.5vw; */
+    /* width: 20vw; */
     z-index: 60;
   }
 
   #Gamil {
     filter: drop-shadow(5px 5px black);
-    font-size: 12rem;
-    transform: translate(0, 29.1px);
+    font-size: 14rem;
+    /* transform: translate(0, 29.1px); */
     font-family: "Thomas";
+    color: white;
   }
 
   #FortyTwo {
     position: absolute;
-    top: 2vh;
-    right: 27vw;
-    width: 15vw;
+    top: 62vh;
+    right: 7vw;
+    width: 300px;
     z-index: 20;
   }
 
   #Arrow {
-    position: absolute;
-    left: 50%;
-    top: 92%;
-    transform: translate(-50%, -50%);
+    /* position: absolute; */
+    /* left: 50%; */
+    /* top: 92%; */
+    /* transform: translate(-50%, -50%); */
     z-index: 100;
   }
 }
 
 /* PHONE */
-@keyframes bounce {
+/* @keyframes bounce {
   0%,
   20%,
   50%,
@@ -101,8 +119,9 @@
   60% {
     transform: translateY(-15px);
   }
-}
+} */
 
+/* 
 @media only screen and (min-width: 200px) and (max-width: 767px) {
   body {
     overflow-x: none;
@@ -153,3 +172,14 @@
     animation: bounce 2s infinite;
   }
 }
+ */
+
+/*
+
+  320px — 480px: Mobile devices
+  481px — 768px: iPads, Tablets
+  769px — 1024px: Small screens, laptops
+  1025px — 1200px: Desktops, large screens
+  1201px and more —  Extra large screens, TV
+
+*/
