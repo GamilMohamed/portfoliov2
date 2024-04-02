@@ -106,7 +106,6 @@ const namesntype: { [key: string]: string } = {
   "vscode": "infra",
   "nodejs": "lib",
 };
-const keysToLoop: string[] = Object.keys(namesntype);
 
 function Projets() {
   return (
@@ -117,8 +116,8 @@ function Projets() {
             <div
               key={index}
               className="projet"
-              style={{ flexDirection: index % 2 ? "row-reverse" : "row"}}
-              // style={{ flexDirection: index % 2 ? "row-reverse" : "row", backgroundColor: fourrandomcolors[index % 4]}}
+              // style={{ flexDirection: index % 2 ? "row-reverse" : "row"}}
+              style={{ flexDirection: index % 2 ? "row-reverse" : "row", backgroundColor: fourrandomcolors[index % 4]}}
             >
               <div className="description" style={{textAlign: index % 2 ? "end": "start"}}>
                 <h2>{projet.name}</h2>

@@ -3,12 +3,10 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const BigBloc = styled.div<{
-  $width: string;
   $main: string;
   $destroy: boolean;
 }>`
   background-color: ${(props) => props.$main};
-  width: ${(props) => props.$width};
   transition: all 0.5s;
   transform: rotate(90deg, 0);
   display: ${(props) => (props.$destroy ? "none" : "")};
@@ -78,7 +76,6 @@ interface SquareRectangleProps {
 
 const WindowBloc: React.FC<SquareRectangleProps> = ({
   theme,
-  width = "min-content",
   button,
   title,
   children,

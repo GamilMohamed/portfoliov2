@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Reveal } from "../test";
-import { motion } from "framer-motion";
 
 const nametoicon: { [key: string]: string } = { 
   "react":"react-plain",
