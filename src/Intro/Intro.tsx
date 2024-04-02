@@ -8,7 +8,6 @@ import "./styles/intro_phone.css";
 import "./styles/intro_tablet.css";
 import RandomDiv from "./RandomDiv";
 import { animation, newanimation, getRandomNumber } from "./IntroVars";
-import { useRef } from "react";
 import { scrollToElement } from "../App";
 
 interface IProps {
@@ -44,29 +43,6 @@ function Intro({ refx }: IProps) {
 
       {/*  BLOC BLEU 2    */}
       <RandomDiv />
-
-      {/*  CV BLANC    */}
-      {/* <div id="CV">
-        <Reveal
-          animation={animation}
-          transition={{
-            duration: 0.5,
-            delay: 0.5,
-          }}
-        >
-          <WindowBloc
-            pad={"p-4"}
-            theme="white"
-            button={"READ"}
-            title={"CV"}
-            action={() => (location.href = "src/assets/resume.pdf")}
-          >
-            <>
-              <p className="textbigscreen">Click to see my CV</p>
-            </>
-          </WindowBloc>
-        </Reveal>
-      </div> */}
 
       {/*  MOHA PIXEL    */}
       <div id="PixelMoha"
@@ -146,7 +122,9 @@ function Intro({ refx }: IProps) {
 
       {/*  ARROW    */}
       <div id="Arrow">
-        <img src={arrow} alt="arrow" />
+        <img 
+        onClick={() => scrollToElement(refx)}
+        src={arrow} alt="arrow" />
       </div>
     </>
   );

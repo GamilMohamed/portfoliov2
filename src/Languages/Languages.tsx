@@ -8,7 +8,6 @@ function Languages() {
 	<div>
 		<AboutMe/>
 		<LangBloc/>
-		<Projets/>
 	</div>
   );
 }

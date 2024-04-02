@@ -49,7 +49,7 @@
   } */
 
   #PixelMoha {
-    position: absolute;
+    position:absolute;
     top: 23vh;
     left: 13vw;
     width: 25em;
@@ -101,6 +101,7 @@
     /* top: 92%; */
     /* transform: translate(-50%, -50%); */
     z-index: 100;
+    cursor: pointer;
   }
 }
 

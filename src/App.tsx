@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import Intro from "./Intro/Intro";
 import Languages from "./Languages/Languages";
+import Projets from "./Languages/Projets";
 // import GridSystem from "./GridSystem/GridSystem";
 export const scrollToElement = (divRef: any) => {
   const { current } = divRef;
@@ -16,15 +17,14 @@ function App() {
   return (
     <>
       <div id="Intro">
-        <Intro refx={divRef}
-        />
+        <Intro refx={divRef} />
       </div>
-      <div
-      ref={divRef}
-      >
+      <div ref={divRef}>
         <Languages />
       </div>
-      <button onClick={() => scrollToElement(divRef)}>Scroll to Intro</button>
+      <div id="Project" >
+        <Projets />
+      </div>
     </>
   );
 }
