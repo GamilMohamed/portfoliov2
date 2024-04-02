@@ -22,18 +22,18 @@ const Logo = styled.div<{ $bg: string }>`
 `;
 
 const namesntype: { [key: string]: string } = {
-  "react": "lib",
-  "django": "lib",
-  "nestjs": "lib",
+  "git": "infra",
+  "bash": "infra",
   "c": "lang",
   "python": "lang",
   "typescript": "lang",
   "postgresql": "infra",
-  "git": "infra",
-  "bash": "infra",
-  "express": "lib",
   "docker": "infra",
   "vscode": "infra",
+  "express": "lib",
+  "react": "lib",
+  "django": "lib",
+  "nestjs": "lib",
   "nodejs": "lib",
 };
 

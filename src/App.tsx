@@ -22,7 +22,7 @@ function App() {
       <div ref={divRef}>
         <Languages />
       </div>
-      <div id="Project" >
+      <div id="Project">
         <Projets />
       </div>
     </>

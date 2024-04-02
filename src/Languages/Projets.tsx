@@ -4,7 +4,9 @@ import minishell from "../assets/projects/shell.gif";
 import push_swap from "../assets/projects/pushswap.gif";
 import ps42 from "../assets/projects/ps42.mp4";
 import styled from "styled-components";
-import { Reveal } from "../test";
+import { Reveal, Reveal2 } from "../test";
+import { motion } from "framer-motion";
+// import { useEffect } from "react";
 
 const nametoicon: { [key: string]: string } = {
   react: "react-plain",
@@ -20,17 +22,19 @@ const nametoicon: { [key: string]: string } = {
   docker: "docker-plain",
   vscode: "vscode-plain",
   nodejs: "nodejs-plain",
+  javascript: "javascript-plain",
+  socketio: "socketio-original",
 };
 
 class Projet {
   name: string;
-  description: string;
+  description: string[];
   image: string | undefined;
   video: string | undefined;
   code: string[];
   constructor(
     name: string,
-    description: string,
+    description:  string[],
     image: string | undefined,
     video: string | undefined,
     code: string[]
@@ -45,42 +49,47 @@ class Projet {
 
 const projets: Projet[] = [
   new Projet(
-    "Cub3D",
-    "Cub3d is a project that aims to create a 3D game engine from scratch using raycasting.",
+    "Drawing Game",
+    ["Drawing Game is a project that aims to create a simple drawing game using websockets.", "This project was created using React, NodeJS, and websockets.", "The game allows multiple users to draw on the same canvas in real-time."],
     undefined,
-    cub3d,
-    ["c", "vscode"]
+    ps42,
+    ["express", "javascript", "react", "typescript", "vscode", "git"]
   ),
+
   new Projet(
     "Minishell",
-    "Minishell is a project that aims to create a simple shell.",
+    ["Minishell is a project that aims to create a simple shell."],
     minishell,
     undefined,
     ["c", "vscode", "bash"]
   ),
-  new Projet(
-    "Push Swap",
-    "Push_swap is a project that aims to sort a list of integers using two stacks.",
-    push_swap,
-    undefined,
-    ["c", "vscode"]
-  ),
+
   new Projet(
     "PS42",
-    "PS42 is a project that aims to create a 42 school project management tool.",
+    ["PS42 is a project that aims to create a 42 school project management tool."],
     undefined,
     ps42,
     ["react", "typescript", "vscode", "docker", "postgresql", "nestjs", "git"]
   ),
+
   new Projet(
-    "Drawing Game",
-    "Drawing Game is a project that aims to create a simple drawing game using websockets.",
+    "Cub3D",
+    ["Cub3d is a project that aims to create a 3D game engine from scratch using raycasting."],
     undefined,
-    ps42,
-    ["express", "react", "typescript", "vscode", "git"]
+    cub3d,
+    ["c", "vscode"]
+  ),
+
+  new Projet(
+    "Push Swap",
+    ["Push_swap is a project that aims to sort a list of integers using two stacks."],
+    push_swap,
+    undefined,
+    ["c", "vscode"]
   ),
 ];
-const fourrandomcolors = ["#FF6633", "#FFB399", "#FF33FF", "#FFFF99"];
+const fourrandomcolors = ["rgb(187, 216, 179, 0.5)", "rgb(243, 182, 31, 0.5)", "rgb(162, 159, 21, 0.5)", "rgb(81, 13, 10, 0.5)"];
+
 
 const colorsfromtype: { [key: string]: string } = {
   lang: "#2edaaa",
@@ -105,35 +114,60 @@ const namesntype: { [key: string]: string } = {
   docker: "infra",
   vscode: "infra",
   nodejs: "lib",
+  javascript: "lang",
+  socketio: "lib",
 };
 
 const Description = styled.div<{ $align: string }>`
   text-align: ${(props) => props.$align};
 `;
 
-const Row = styled.div<{ $index:number }>`
-flex-direction: ${(props) => props.$index % 2 ? "row-reverse" : "row"};
-background-color: ${(props) => fourrandomcolors[props.$index % 4]};
+const Row = styled.div<{ $index: number }>`
+  flex-direction: ${(props) => (props.$index % 2 ? "row-reverse" : "row")};
+  // background-color: ${(props) => fourrandomcolors[props.$index % 4]};
 `;
 
 function Projets() {
+
   return (
     <>
       <div className="projets">
         {projets.map((projet, index) => {
           return (
-            <Row
+            <Reveal2
               key={index}
-              className="projet"
-              $index={index}
-            >
+              bgcolor={fourrandomcolors[index % 4]}
+              left={index % 2 ? true : false}
+              animation={{
+                hidden: { x: -100 * (index % 2 - 1 + index % 2), opacity: 0 },
+                visible: { x: 0, opacity: 1 },
+              }} transition={{
+                duration: 1,
+                delay: 0.1
+              
+              }}>
+
+            <Row key={index} className="projet" $index={index}>
               <Description
                 className="description"
                 $align={index % 2 ? "end" : "start"}
               >
-                <h2>{projet.name}</h2>
-                <p>{projet.description}</p>
-                {projet.code && (
+                <motion.h2
+                  initial={{ x: -100 * (index % 2 - 1 + index % 2), opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.1 }}
+                >
+                  {projet.name}
+                </motion.h2>
+                  {/* <p>{projet.description}</p> */}
+                {projet.description && typeof projet.description === "string" ? (
+                  <p>{projet.description}</p>
+                ) : (
+                  projet.description.map((desc, index) => (
+                    <p key={index}>{desc}</p>
+                  ))
+                )}
+              {projet.code && (
                   <div
                     className="code"
                     style={{ flexDirection: index % 2 ? "row-reverse" : "row" }}
@@ -157,11 +191,28 @@ function Projets() {
                     ))}
                   </div>
                 )}
+
+                <div className="flex justify-around mt-4">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ border: "none" }}
+                  >
+                  <button>See live</button >
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ border: "none" }}
+                  >
+                  <button>Source Code</button >
+                </motion.button>
+                </div>
               </Description>
               <div className="media">
                 {projet.video ? (
-                  <video controls>
-                    <source src={projet.video} type="video/mp4" />
+                  <video autoPlay  controls>
+                    <source  src={projet.video} type="video/mp4" />
                   </video>
                 ) : (
                   <>
@@ -169,7 +220,9 @@ function Projets() {
                   </>
                 )}
               </div>
+              {/* </motion.div> */}
             </Row>
+            </Reveal2>
           );
         })}
       </div>
