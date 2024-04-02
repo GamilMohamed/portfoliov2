@@ -92,20 +92,29 @@ const Logo = styled.div<{ $bg: string }>`
   background-color: ${(props) => props.$bg};
 `;
 const namesntype: { [key: string]: string } = {
-  "react": "lib",
-  "django": "lib",
-  "nestjs": "lib",
-  "c": "lang",
-  "python": "lang",
-  "typescript": "lang",
-  "postgresql": "infra",
-  "git": "infra",
-  "bash": "infra",
-  "express": "lib",
-  "docker": "infra",
-  "vscode": "infra",
-  "nodejs": "lib",
+  react: "lib",
+  django: "lib",
+  nestjs: "lib",
+  c: "lang",
+  python: "lang",
+  typescript: "lang",
+  postgresql: "infra",
+  git: "infra",
+  bash: "infra",
+  express: "lib",
+  docker: "infra",
+  vscode: "infra",
+  nodejs: "lib",
 };
+
+const Description = styled.div<{ $align: string }>`
+  text-align: ${(props) => props.$align};
+`;
+
+const Row = styled.div<{ $index:number }>`
+flex-direction: ${(props) => props.$index % 2 ? "row-reverse" : "row"};
+background-color: ${(props) => fourrandomcolors[props.$index % 4]};
+`;
 
 function Projets() {
   return (
@@ -113,17 +122,22 @@ function Projets() {
       <div className="projets">
         {projets.map((projet, index) => {
           return (
-            <div
+            <Row
               key={index}
               className="projet"
-              // style={{ flexDirection: index % 2 ? "row-reverse" : "row"}}
-              style={{ flexDirection: index % 2 ? "row-reverse" : "row", backgroundColor: fourrandomcolors[index % 4]}}
+              $index={index}
             >
-              <div className="description" style={{textAlign: index % 2 ? "end": "start"}}>
+              <Description
+                className="description"
+                $align={index % 2 ? "end" : "start"}
+              >
                 <h2>{projet.name}</h2>
                 <p>{projet.description}</p>
                 {projet.code && (
-                  <div className="code" style={{flexDirection: index % 2 ? "row-reverse" :"row"}}>
+                  <div
+                    className="code"
+                    style={{ flexDirection: index % 2 ? "row-reverse" : "row" }}
+                  >
                     {projet.code.map((name, index) => (
                       <Reveal
                         key={index}
@@ -133,14 +147,17 @@ function Projets() {
                         }}
                         transition={{ duration: 1, delay: index / 10 }}
                       >
-                        <Logo id="mywoman" $bg={colorsfromtype[namesntype[name]]}>
+                        <Logo
+                          id="mywoman"
+                          $bg={colorsfromtype[namesntype[name]]}
+                        >
                           <i className={`devicon-${nametoicon[name]}`}></i>
-                          </Logo>
+                        </Logo>
                       </Reveal>
                     ))}
                   </div>
                 )}
-              </div>
+              </Description>
               <div className="media">
                 {projet.video ? (
                   <video controls>
@@ -152,7 +169,7 @@ function Projets() {
                   </>
                 )}
               </div>
-            </div>
+            </Row>
           );
         })}
       </div>
