@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: "Pixer";
   src: url("./assets/Pixer-Regular.woff");
@@ -22,8 +23,28 @@ body {
   overflow-x: hidden; /* A CHECK */
   padding: 0;
   margin: 0;
-  /* background-color: #131417; */
+  background-color: #131417;
   user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color:white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #131417; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background : #b30000;
 }
 
 .button {

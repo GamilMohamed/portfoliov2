@@ -44,17 +44,31 @@
   background-color: white;
   width: 100%;
   height: 100%;
+
+  padding: 100px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  /* align-items: center; */
 }
 
 .projets {
-  width: 90%;
+  /* width: 90%;
   margin: 0 auto;
+  background-color: chocolate !important; */
 }
 
 .projet {
-  margin: 10px;
-  display: flex;
-  width: 100%;
+  padding: 20px;
+  /* background-color: red !important; */
+  /* display: flex !important; */
+  /* align-items: center; */
+  /* justify-content: space-between !important; */
+  /* flex-direction: row !important; */
+
+  /* margin: 10px; */
+  /* width: 100%; */
+  /* margin: 0 auto; */
 }
 
 .projet video {
@@ -70,19 +84,25 @@
 }
 
 .media {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* margin: 0 auto; */
+  /* background-color: pink !important; */
 }
 
 .description {
+  /* width: 50%; */
+  width: 800px;
+
+  /* background-color: lightblue !important; */
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .description p {
   font-size: 1.5em;
+  text-align: justify;
 }
 
 .description h2 {
@@ -100,7 +120,7 @@
 
 #mywoman {
   /* background-color: black; */
-font-family: "Pixer", sans-serif;
+  font-family: "Pixer", sans-serif;
   display: flex;
   /* flex-direction: column; */
   justify-content: center;
@@ -123,23 +143,30 @@ font-family: "Pixer", sans-serif;
 
 .typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }

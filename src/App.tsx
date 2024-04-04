@@ -2,7 +2,8 @@ import { useRef } from "react";
 import Intro from "./Intro/Intro";
 import Languages from "./Languages/Languages";
 import Projets from "./Languages/Projets";
-// import GridSystem from "./GridSystem/GridSystem";
+import Footer from "./Footer/Footer";
+
 export const scrollToElement = (divRef: any) => {
   const { current } = divRef;
   console.log(current);
@@ -13,10 +14,11 @@ export const scrollToElement = (divRef: any) => {
 
 function App() {
   const divRef = useRef<HTMLDivElement>(null);
+  const headRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
-      <div id="Intro">
+      <div id="Intro" ref={headRef} >
         <Intro refx={divRef} />
       </div>
       <div ref={divRef}>
@@ -24,6 +26,9 @@ function App() {
       </div>
       <div id="Project">
         <Projets />
+      </div>
+      <div id="Footer">
+        <Footer to={headRef}/>
       </div>
     </>
   );

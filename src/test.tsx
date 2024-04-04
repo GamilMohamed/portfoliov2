@@ -1,4 +1,4 @@
-import { motion, useAnimation, useInView, AnimationProps } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export interface Anim {
@@ -20,10 +20,10 @@ interface Props {
 
 interface Props2 {
   children: JSX.Element;
-  animation: AnimationProps;
+  animation: any;
   transition: any;
-  bgcolor: string;
-  left: boolean;
+  bgcolor?: string;
+  left?: boolean;
 }
 
 // const animation: Anim = {
@@ -35,15 +35,12 @@ export const Reveal2 = ({
   children,
   animation,
 // transition,
-  bgcolor,
-  left,
 }: Props2) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
 
   const slideControls = useAnimation();
-  console.log("color is" + bgcolor + "left is", left);
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
@@ -74,7 +71,7 @@ export const Reveal2 = ({
         animate={slideControls}
         transition={{ duration: 0.5, ease: "easeIn" }}
         style={{
-          backgroundColor: bgcolor,
+          backgroundColor: "rgba(200, 200, 200, 0.5)",
           position: "absolute",
           top: 0,
           bottom: 0,
@@ -85,8 +82,6 @@ export const Reveal2 = ({
           zIndex: 10,
         }}
       />
-        {left ? "je suis a gauche" : "je suis a droite"}
-
     </div>
   );
 };

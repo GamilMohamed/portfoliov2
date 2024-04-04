@@ -12,7 +12,7 @@
     color: white;
     height: 100vh;
     width: 100vw;
-  background-color: #131417;
+    background-color: #131417;
   }
 
   #blackBloc {
@@ -50,7 +50,7 @@
   } */
 
   #PixelMoha {
-    position:absolute;
+    position: absolute;
     top: 23vh;
     left: 13vw;
     width: 25em;
@@ -137,7 +137,8 @@
   #Intro {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: column;footer
+footer
     justify-content: space-evenly;
     color: white;
     height: 80vh;

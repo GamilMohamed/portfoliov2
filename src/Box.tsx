@@ -70,7 +70,7 @@ interface SquareRectangleProps {
   action?: () => void | undefined | any;
   children?: React.ReactNode;
   zIndex?: number;
-  close?: boolean;
+  close?: boolean | null;
   pad?: boolean | string;
 }
 
@@ -80,7 +80,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
   title,
   children,
   action,
-  close,
+  close = false,
   pad = "p-6",
 }) => {
   const [buttonVisible, setButtonVisible] = useState(true);
@@ -104,7 +104,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
     >
       <TitleBloc $main={main} $second={second} className={`text-3xl px-2`}>
         {title}
-        <svg
+        {close != null && <svg
           width="35px"
           style={{ transform: "translate(0 , 2px)" }}
           height="35px"
@@ -133,7 +133,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
           {!buttonVisible && !close && (
             <rect height="10" width="10" y="3" x="5" />
           )}
-        </svg>
+        </svg>}
       </TitleBloc>
       <DataBloc
         $main={main}
