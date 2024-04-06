@@ -24,9 +24,11 @@ function App() {
       <div ref={divRef}>
         <Languages />
       </div>
-      <div id="Project">
+      <section id="projects">
+      <div className="container mx-auto sm:px-4">
         <Projets />
-      </div>
+        </div>
+      </section>
       <div id="Footer">
         <Footer to={headRef}/>
       </div>

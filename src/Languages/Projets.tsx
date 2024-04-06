@@ -1,4 +1,5 @@
-import "./projets.css";
+// import "./projets.css";
+import "./test.css";
 import cub3d from "../assets/projects/cub3d.mp4";
 import minishell from "../assets/projects/shell.gif";
 import push_swap from "../assets/projects/pushswap.gif";
@@ -40,7 +41,7 @@ class Projet {
     image: string | undefined,
     video: string | undefined,
     code: string[],
-    color: "white" | "red" | "blue" | "black",
+    color: "white" | "red" | "blue" | "black"
   ) {
     this.name = name;
     this.description = description;
@@ -62,16 +63,16 @@ const projets: Projet[] = [
     undefined,
     ps42,
     ["express", "javascript", "react", "typescript", "vscode", "git"],
-    "black",
-    ),
-    
-    new Projet(
-      "Minishell",
-      ["Minishell is a project that aims to create a simple shell."],
-      minishell,
-      undefined,
-      ["c", "vscode", "bash"],
-      "black",
+    "black"
+  ),
+
+  new Projet(
+    "Minishell",
+    ["Minishell is a project that aims to create a simple shell."],
+    minishell,
+    undefined,
+    ["c", "vscode", "bash"],
+    "black"
   ),
 
   new Projet(
@@ -82,8 +83,8 @@ const projets: Projet[] = [
     undefined,
     ps42,
     ["react", "typescript", "vscode", "docker", "postgresql", "nestjs", "git"],
-    "blue",
-    ),
+    "blue"
+  ),
 
   new Projet(
     "Cub3D",
@@ -93,7 +94,7 @@ const projets: Projet[] = [
     undefined,
     cub3d,
     ["c", "vscode"],
-    "red",
+    "red"
   ),
 
   new Projet(
@@ -104,7 +105,7 @@ const projets: Projet[] = [
     push_swap,
     undefined,
     ["c", "vscode"],
-    "black",
+    "black"
   ),
 ];
 const fourrandomcolors = [
@@ -162,116 +163,90 @@ const Row = styled.div<{ $index: number }>`
   // flex-direction: ${(props) => (props.$index % 2 ? "row-reverse" : "row")};
 `;
 
+//   <Reveal2
+//   key={index}
+//   bgcolor={fourrandomcolors[index % 4]}
+//   // left={index % 2 ? true : false}
+//   animation={{
+//     hidden: {
+//       x: -100 * ((index % 2) - 1 + (index % 2)),
+//       opacity: 0,
+//     },
+//     visible: { x: 0, opacity: 1 },
+//   }}
+//   transition={{
+//     duration: 1,
+//     delay: 0.1,
+//   }}
+// >
 function Projets() {
   return (
     <>
-        {projets.map((projet, index) => {
-          return (
-            <div className="projet">
-            <Reveal2
-              key={index}
-              bgcolor={fourrandomcolors[index % 4]}
-              // left={index % 2 ? true : false}
-              animation={{
-                hidden: {
-                  x: -100 * ((index % 2) - 1 + (index % 2)),
-                  opacity: 0,
-                },
-                visible: { x: 0, opacity: 1 },
-              }}
-              transition={{
-                duration: 1,
-                delay: 0.1,
-              }}
+      {projets.map((projet, index) => (
+        // {/* WHOLE PROJECT */}
+        <div
+          className="flex flex-wrap mt-6"
+          style={{ backgroundColor: fourrandomcolors[index % 4] }}
+        >
+          {/* DESCRIPTION */}
+          <div className=" lg:w-1/3 lg:pr-4 lg:pl-4 sm:w-full sm:pr-4 sm:pl-4">
+            <div className="project-wrapper__text load-hidden">
+              <h3 className="project-wrapper__text-title">{projet.name}</h3>
+              <div>
+                <p className="mb-4">
+                  {projet.description.map((desc) => (
+                    <>{desc}</>
+                  ))}
+                </p>
+              </div>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                className="cta-btn cta-btn--hero"
+                href="#!"
               >
-              <Row key={index} $index={index}>
-                <Description
-
-                  className="description"
-                  // $align={index % 2 ? "end" : "start"}
+                See Live
+              </a>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                className="cta-btn text-color-main"
+                href="#!"
+              >
+                Source Code
+              </a>
+            </div>
+          </div>
+          {/* VIDEO / PHOTO */}
+          <div className=" lg:w-2/3 lg:pr-4 lg:pl-4 sm:w-full sm:pr-4 sm:pl-4">
+            <div className="project-wrapper__image load-hidden">
+              <a rel="noreferrer" href="#!" target="_blank">
+                <div
+                  data-tilt
+                  data-tilt-max="4"
+                  data-tilt-glare="true"
+                  data-tilt-max-glare="0.5"
+                  className="thumbnail rounded js-tilt"
                 >
-                  <motion.h2
-                    initial={{
-                      x: 100,
-                      opacity: 0,
-                    }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.1 }}
-                  >
-                    {projet.name}
-                  </motion.h2>
-                  {/* <p>{projet.description}</p> */}
-                  {projet.description &&
-                  typeof projet.description === "string" ? (
-                    <p>{projet.description}</p>
-                  ) : (
-                    projet.description.map((desc, index) => (
-                      <p key={index}>{desc}</p>
-                      ))
-                      )}
-                  {projet.code && (
-                    <div
-                    className="code"
-                    // style={{ flexDirection: index % 2 ? "row-reverse" : "row" }}
-                    >
-                      {projet.code.map((name, index) => (
-                        <Reveal
-                        key={index}
-                        animation={{
-                          hidden: { scale: 0 },
-                          visible: { scale: 1 },
-                          }}
-                          transition={{ duration: 1, delay: index / 10 }}
-                          >
-                          <Logo
-                            id="mywoman"
-                            $bg={colorsfromtype[namesntype[name]]}
-                            >
-                            <i className={`devicon-${nametoicon[name]}`}></i>
-                          </Logo>
-                        </Reveal>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="flex justify-around mt-4">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      style={{ border: "none" }}
-                    >
-                      <button>See live</button>
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      style={{ border: "none" }}
-                      >
-                      <button>Source Code</button>
-                    </motion.button>
-                  </div>
-                </Description>
-                  <WindowBloc theme={projet.color} pad={"p-4"} close={null}  title={projet.name}>
-                <div className="media">
                   {projet.video ? (
-                    <video autoPlay loop muted playsInline >
+                    <video autoPlay loop muted playsInline>
                       <source src={projet.video} type="video/mp4" />
                     </video>
                   ) : (
-                    <>
-                      <img src={projet.image} alt={projet.name} />
-                    </>
+                    <img
+                      alt="Project Image"
+                      className="max-w-full h-auto"
+                      src={projet.image}
+                    />
                   )}
                 </div>
-                  </WindowBloc>
-                
-                {/* </motion.div> */}
-              </Row>
-            </Reveal2>
+              </a>
+            </div>
+          </div>
         </div>
-          );
-        })}
+      ))}
     </>
   );
 }
+// {/* </Reveal2> */}
 export default Projets;
