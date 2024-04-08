@@ -2,6 +2,7 @@ import WindowBloc from "../Box";
 import { newanimation, getRandomNumber, animation } from "../Intro/IntroVars";
 import Terminal from "../Terminal";
 import { Reveal } from "../test";
+import "./aboutme_phone.css";
 
 function AboutMe() {
   return (

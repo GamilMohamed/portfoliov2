@@ -18,19 +18,24 @@ function App() {
 
   return (
     <>
-      <div id="Intro" ref={headRef} >
+      <div id="Intro" ref={headRef}>
         <Intro refx={divRef} />
       </div>
+      {/* <div style={{height:"10vh"}}></div> */}
       <div ref={divRef}>
+        <h1 className="section-title text-center text-white putain">About Me</h1>
         <Languages />
       </div>
       <section id="projects">
-      <div className="container mx-auto sm:px-4">
-        <Projets />
+        <div className="container mx-auto sm:px-4">
+          <div className="project-wrapper">
+            <h1 className="section-title text-center ">Projects</h1>
+            <Projets />
+          </div>
         </div>
       </section>
       <div id="Footer">
-        <Footer to={headRef}/>
+        <Footer to={headRef} />
       </div>
     </>
   );

@@ -1,10 +1,14 @@
 #projects {
   background-color: rgb(255, 255, 255);
   color: #1a1a1a;
-  margin-top: -10rem;
+  /* margin-top: -10rem; */
   padding-top: 15rem;
+  text-wrap: balance;
+  /* height: 202vh; */
+  /* background-color: rgb(0, 255, 13) !important; */
 }
 
+/* MEDIUM */
 @media (min-width: 768px) and (max-width: 1023px) {
   #projects {
     margin-top: 0;
@@ -14,6 +18,7 @@
 
 #projects .project-wrapper {
   margin-bottom: 15rem;
+  
 }
 
 @media (max-width: 767px) {
@@ -23,6 +28,7 @@
 }
 
 #projects .project-wrapper .row {
+
   margin-bottom: 8rem;
 }
 
@@ -34,6 +40,7 @@
 
 #projects .project-wrapper__text {
   text-align: left;
+  
 }
 
 @media (max-width: 767px) {
@@ -49,7 +56,7 @@
 }
 
 #projects .project-wrapper__text-title {
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-bottom: 1.8rem;
   font-size: 1.6rem;
 }
@@ -65,8 +72,12 @@
 }
 
 #projects .project-wrapper__image {
-  width: 90%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+  /* width: 700px; */
+  
+  /* margin: 0 auto; */
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -85,16 +96,37 @@
 #projects .project-wrapper__image .thumbnail {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
   transition: 0.5s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
-    0.5s box-shadow,
-    0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
-	/* width: 700px; */
+  0.5s box-shadow,
+  0.5s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+	width: 700px; 
 }
 
 @media (max-width: 767px) {
-	#projects .project-wrapper__image .thumbnail {
-		border: 1px solid #f5f5f5;
+  #projects .project-wrapper__image .thumbnail {
+    border: 1px solid #f5f5f5;
 		box-shadow: none;
 		margin-bottom: 3.2rem;
-		width: 350px;
+    width: auto;
+  }
+  #projects .project-wrapper__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.section-title {
+  margin: 0px;
+  /* margin-bottom: 4.5rem; */
+  font-size: 4rem;
+  text-transform: uppercase;
+
+}
+
+@media (max-width:767px) {
+  .section-title {
+
+    font-size: 2.8rem;
   }
 }

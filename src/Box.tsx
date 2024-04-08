@@ -102,7 +102,7 @@ const WindowBloc: React.FC<SquareRectangleProps> = ({
       id="MargoBox"
       className="p-2"
     >
-      <TitleBloc $main={main} $second={second} className={`text-3xl px-2`}>
+      <TitleBloc $main={main} $second={second} className={`text-3xl px-2`} id="khalid" >
         {title}
         {close != null && <svg
           width="35px"

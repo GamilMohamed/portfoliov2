@@ -4,29 +4,29 @@ import cub3d from "../assets/projects/cub3d.mp4";
 import minishell from "../assets/projects/shell.gif";
 import push_swap from "../assets/projects/pushswap.gif";
 import ps42 from "../assets/projects/ps42.mp4";
-import styled from "styled-components";
-import { Reveal, Reveal2 } from "../test";
-import { motion } from "framer-motion";
-import WindowBloc from "../Box";
+// import styled from "styled-components";
+// import { Reveal, Reveal2 } from "../test";
+// import { motion } from "framer-motion";
+// import WindowBloc from "../Box";
 // import { useEffect } from "react";
 
-const nametoicon: { [key: string]: string } = {
-  react: "react-plain",
-  django: "django-plain",
-  nestjs: "nestjs-plain",
-  c: "c-plain",
-  python: "python-plain",
-  typescript: "typescript-plain",
-  postgresql: "postgresql-plain",
-  git: "git-plain",
-  bash: "bash-plain",
-  express: "express-original",
-  docker: "docker-plain",
-  vscode: "vscode-plain",
-  nodejs: "nodejs-plain",
-  javascript: "javascript-plain",
-  socketio: "socketio-original",
-};
+// const nametoicon: { [key: string]: string } = {
+//   react: "react-plain",
+//   django: "django-plain",
+//   nestjs: "nestjs-plain",
+//   c: "c-plain",
+//   python: "python-plain",
+//   typescript: "typescript-plain",
+//   postgresql: "postgresql-plain",
+//   git: "git-plain",
+//   bash: "bash-plain",
+//   express: "express-original",
+//   docker: "docker-plain",
+//   vscode: "vscode-plain",
+//   nodejs: "nodejs-plain",
+//   javascript: "javascript-plain",
+//   socketio: "socketio-original",
+// };
 
 class Projet {
   name: string;
@@ -53,43 +53,43 @@ class Projet {
 }
 
 const projets: Projet[] = [
-  new Projet(
-    "Drawing Game",
-    [
-      "Drawing Game is a   that aims to create a simple drawing game using websockets.",
-      "This project was created using React, NodeJS, and websockets.",
-      "The game allows multiple users to draw on the same canvas in real-time.",
-    ],
-    undefined,
-    ps42,
-    ["express", "javascript", "react", "typescript", "vscode", "git"],
-    "black"
-  ),
-
-  new Projet(
-    "Minishell",
-    ["Minishell is a project that aims to create a simple shell."],
-    minishell,
-    undefined,
-    ["c", "vscode", "bash"],
-    "black"
-  ),
+  // new Projet(
+  //   "Drawing Game",
+  //   [
+  //     "Drawing Game is a   that aims to create a simple drawing game using websockets.",
+  //     "This project was created using React, NodeJS, and websockets.",
+  //     "The game allows multiple users to draw on the same canvas in real-time.",
+  //   ],
+  //   undefined,
+  //   ps42,
+  //   ["express", "javascript", "react", "typescript", "vscode", "git"],
+  //   "black"
+  // ),
 
   new Projet(
     "PS42",
     [
-      "PS42 is a project that aims to create a 42 school project management tool.",
+      "PS42 is a project that aims to create a simple website with an authentication system, a chat system, games and friends system.",
     ],
     undefined,
     ps42,
     ["react", "typescript", "vscode", "docker", "postgresql", "nestjs", "git"],
     "blue"
   ),
+  new Projet(
+    "Minishell",
+    ["The objective of this project is for you to create a simple shell. Learnt a lot about file descriptors, process and bash. Coded in C."],
+    minishell,
+    undefined,
+    ["c", "vscode", "bash"],
+    "black"
+  ),
+
 
   new Projet(
     "Cub3D",
     [
-      "Cub3d is a project that aims to create a 3D game engine from scratch using raycasting.",
+      "Interesting project where I learnt how raycasting works and how to render a 3D environment with a 2D map. Coded in C with the minilibx library.",
     ],
     undefined,
     cub3d,
@@ -100,7 +100,7 @@ const projets: Projet[] = [
   new Projet(
     "Push Swap",
     [
-      "Push_swap is a project that aims to sort a list of integers using two stacks.",
+      "A sorting algorithm that operates on two stacks with limited operations with a visualizer to see how it works. Coded in C with the Ncurse library.",
     ],
     push_swap,
     undefined,
@@ -115,53 +115,53 @@ const fourrandomcolors = [
   "rgb(81, 13, 10, 0.5)",
 ];
 
-const colorsfromtype: { [key: string]: string } = {
-  lang: "#2edaaa",
-  lib: "#f3a248",
-  infra: "#1e35ef",
-};
+// const colorsfromtype: { [key: string]: string } = {
+//   lang: "#2edaaa",
+//   lib: "#f3a248",
+//   infra: "#1e35ef",
+// };
 
-const Logo = styled.div<{ $bg: string }>`
-  background-color: ${(props) => props.$bg};
-`;
-const namesntype: { [key: string]: string } = {
-  react: "lib",
-  django: "lib",
-  nestjs: "lib",
-  c: "lang",
-  python: "lang",
-  typescript: "lang",
-  postgresql: "infra",
-  git: "infra",
-  bash: "infra",
-  express: "lib",
-  docker: "infra",
-  vscode: "infra",
-  nodejs: "lib",
-  javascript: "lang",
-  socketio: "lib",
-};
+// const Logo = styled.div<{ $bg: string }>`
+//   background-color: ${(props) => props.$bg};
+// `;
+// const namesntype: { [key: string]: string } = {
+//   react: "lib",
+//   django: "lib",
+//   nestjs: "lib",
+//   c: "lang",
+//   python: "lang",
+//   typescript: "lang",
+//   postgresql: "infra",
+//   git: "infra",
+//   bash: "infra",
+//   express: "lib",
+//   docker: "infra",
+//   vscode: "infra",
+//   nodejs: "lib",
+//   javascript: "lang",
+//   socketio: "lib",
+// };
 
 // const Description = styled.div<{ $align: string }>`
 // text-align: ${(props) => props.$align};
-const Description = styled.div`
-  text-align: left;
-  // width: 50%;
-  p {
-    font-family: "Roboto", sans-serif;
-  }
-`;
+// const Description = styled.div`
+//   text-align: left;
+//   // width: 50%;
+//   p {
+//     font-family: "Roboto", sans-serif;
+//   }
+// `;
 
-const Row = styled.div<{ $index: number }>`
-  &:hover {
-    // transition: background-color 2s ease-in-out;
-    // background-color: ${(props) => fourrandomcolors[props.$index % 4]};
-  }
-  display: flex;
-  justify-content: space-between;
-  // background-color: white;
-  // flex-direction: ${(props) => (props.$index % 2 ? "row-reverse" : "row")};
-`;
+// const Row = styled.div<{ $index: number }>`
+//   &:hover {
+//     // transition: background-color 2s ease-in-out;
+//     // background-color: ${(props) => fourrandomcolors[props.$index % 4]};
+//   }
+//   display: flex;
+//   justify-content: space-between;
+//   // background-color: white;
+//   // flex-direction: ${(props) => (props.$index % 2 ? "row-reverse" : "row")};
+// `;
 
 //   <Reveal2
 //   key={index}

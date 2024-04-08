@@ -3,12 +3,17 @@ import arrow from "../assets/arrow.svg";
 import { scrollToElement } from "../App";
 function Footer({ to }: { to: any }) {
   return (
-    <div className="footer" style={{ height: "30vh", color: "white" }}>
+    <div className="footer" style={{ height: "30vh", color: "white"}}>
       <img
         src={arrow}
         onClick={() => scrollToElement(to)}
         alt="arrow"
-        style={{ width: "75px", height: "75px", rotate: "180deg", cursor: "pointer"}}
+        style={{
+          width: "75px",
+          height: "75px",
+          rotate: "180deg",
+          cursor: "pointer",
+        }}
       />
       <div>
         <a

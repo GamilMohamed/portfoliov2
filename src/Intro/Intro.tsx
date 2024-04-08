@@ -6,7 +6,7 @@ import pixelmoha from "../assets/gamil_pix.png";
 import "./styles/intro.css";
 import "./styles/intro_phone.css";
 import "./styles/intro_tablet.css";
-import RandomDiv from "./RandomDiv";
+// import RandomDiv from "./RandomDiv";
 import { animation, newanimation, getRandomNumber } from "./IntroVars";
 import { scrollToElement } from "../App";
 
@@ -42,7 +42,7 @@ function Intro({ refx }: IProps) {
       </div>
 
       {/*  BLOC BLEU 2    */}
-      <RandomDiv />
+      {/* <RandomDiv /> */}
 
       {/*  MOHA PIXEL    */}
       <div id="PixelMoha"

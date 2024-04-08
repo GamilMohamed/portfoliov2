@@ -47,7 +47,7 @@ function RandomDiv() {
                 | "white"
             }
             button={"Don't click me"}
-            width={20 + val[Math.floor(Math.random() * 2)]}
+            // width={20 + val[Math.floor(Math.random() * 2)]}
             title={"PROFILE"}
             action={() => handleNewDiv(t, r)}
             key={divList.length}
@@ -73,7 +73,7 @@ function RandomDiv() {
           zIndex={20}
           theme="white"
           button={"Click me !"}
-          width={23}
+          // width={23}
           title={"WELCOME"}
           action={() => handleNewDiv(18, 5)}
         >
