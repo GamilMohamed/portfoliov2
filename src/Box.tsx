@@ -43,22 +43,25 @@ const ButtonBloc = styled.button<{ $main: string; $secondary: string }>`
   transform: translate(0, 10px);
 `;
 
+
+// const myWhite = "rgb(249, 246, 238)";
+// const myWhite = "green";
 export const themes = {
   blue: {
     main: "rgb(29 78 216)",
-    second: "white",
+    second: "rgb(249, 246, 238)",
   },
   white: {
-    main: "white",
+    main: "rgb(249, 246, 238)",
     second: "black",
   },
   black: {
     main: "black",
-    second: "white",
+    second: "rgb(249, 246, 238)",
   },
   red: {
     main: "red",
-    second: "white",
+    second: "rgb(249, 246, 238)",
   },
 };
 

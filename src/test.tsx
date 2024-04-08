@@ -88,7 +88,7 @@ export const Reveal2 = ({
 
 export const Reveal = ({
   children,
-  width = "fit-content",
+  width = "100%",
   bottom,
   top,
   right,
@@ -97,12 +97,13 @@ export const Reveal = ({
   transition,
 }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true});
 
   const mainControls = useAnimation();
   const slideControls = useAnimation();
   useEffect(() => {
     if (isInView) {
+      // alert("isInView");
       mainControls.start("visible");
       slideControls.start("visible");
     }

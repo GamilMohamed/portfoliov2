@@ -3,6 +3,8 @@ import Intro from "./Intro/Intro";
 import Languages from "./Languages/Languages";
 import Projets from "./Languages/Projets";
 import Footer from "./Footer/Footer";
+import AboutMe from "./Languages/AboutMe";
+// import LangBloc from "./Languages/LangBloc";
 
 export const scrollToElement = (divRef: any) => {
   const { current } = divRef;
@@ -21,9 +23,10 @@ function App() {
       <div id="Intro" ref={headRef}>
         <Intro refx={divRef} />
       </div>
-      {/* <div style={{height:"10vh"}}></div> */}
       <div ref={divRef}>
-        <h1 className="section-title text-center text-white putain">About Me</h1>
+        <AboutMe />
+      </div>
+      <div>
         <Languages />
       </div>
       <section id="projects">
@@ -34,9 +37,9 @@ function App() {
           </div>
         </div>
       </section>
-      <div id="Footer">
+      <footer id="Footer">
         <Footer to={headRef} />
-      </div>
+      </footer>
     </>
   );
 }

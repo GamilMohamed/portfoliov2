@@ -7,7 +7,7 @@
   #Intro {
     flex-direction: column;
     justify-content: space-evenly;
-    color: white;
+    color: var(--my-white);
     height: 100vh;
     width: 100vw;
     align-items: center;
@@ -71,7 +71,7 @@
     font-size: 12rem;
     transform: translate(0, 29.1px);
     font-family: "Thomas";
-    color: white;
+    color: var(--my-white);
   }
 
   #FortyTwo {

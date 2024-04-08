@@ -52,6 +52,7 @@ function LangBloc() {
         {keysToLoop.map((name, index) => (
           <Reveal
             key={index}
+            width={"fit-content"}
             animation={{
               hidden: { scale: 0 },
               visible: { scale: 1 },

@@ -6,7 +6,10 @@ import "./aboutme_phone.css";
 
 function AboutMe() {
   return (
-    <div id="AboutMe">
+    <>
+    <div id="AboutMe" style={{position:"relative"}} >
+      <h1 className="section-title text-center text-white putain absolute top-0">About Me</h1>
+      {/* <h1 style={{position: "relative", top: "0", left: "50%", margin: "auto", color: "red"}}>About Me</h1> */}
       <div id="Terminal">
         <Reveal
           animation={newanimation}
@@ -52,6 +55,7 @@ function AboutMe() {
           </div>
       </div>
     </div>
+    </>
   );
 }
 export default AboutMe;
