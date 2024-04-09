@@ -6,10 +6,11 @@ import push_swap from "../assets/projects/pushswap.gif";
 import ps42 from "../assets/projects/ps42.mp4";
 import { Reveal } from "../test";
 import styled from "styled-components";
+import { ButtonBloc } from "../Box";
+import WindowBloc from "../Box";
 // import styled from "styled-components";
 // import { Reveal, Reveal2 } from "../test";
 // import { motion } from "framer-motion";
-// import WindowBloc from "../Box";
 // import { useEffect } from "react";
 
 const nametoicon: { [key: string]: string } = {
@@ -28,6 +29,7 @@ const nametoicon: { [key: string]: string } = {
   nodejs: "nodejs-plain",
   javascript: "javascript-plain",
   socketio: "socketio-original",
+  oracle: "oracle-original",
 };
 
 class Projet {
@@ -37,13 +39,15 @@ class Projet {
   video: string | undefined;
   code: string[];
   color: "white" | "red" | "blue" | "black";
+  render: boolean | undefined;
   constructor(
     name: string,
     description: string[],
     image: string | undefined,
     video: string | undefined,
     code: string[],
-    color: "white" | "red" | "blue" | "black"
+    color: "white" | "red" | "blue" | "black",
+    render?: boolean
   ) {
     this.name = name;
     this.description = description;
@@ -51,6 +55,7 @@ class Projet {
     this.video = video;
     this.code = code;
     this.color = color;
+    this.render = render;
   }
 }
 
@@ -71,17 +76,28 @@ const projets: Projet[] = [
   new Projet(
     "PS42",
     [
-      "PS42 is a project that aims to create a simple website with an authentication system, a chat system, games and friends system.",
+      "PS42 is a project that aims to create a simple website with an <mark>authentication</mark> system, a <mark>chat</mark> system, <mark>games</mark> and <mark>friends</mark> system.",
     ],
     undefined,
     ps42,
     ["react", "typescript", "vscode", "docker", "postgresql", "nestjs", "git"],
+    "black"
+  ),
+  new Projet(
+    "Drawing Game",
+    [
+      "Drawing Game is a game where someones draws a word and the others have to guess it.",
+      "<mark>Websockets</mark> are used to communicate between the <mark>players</mark>. Server is coded in <mark>NodeJS</mark> with <mark>ExpressJS</mark> and the client in <mark>React</mark>.",
+    ],
+    undefined,
+    undefined,
+    ["react", "typescript", "vscode", "oracle", "express", "nodejs", "git"],
     "blue"
   ),
   new Projet(
-    "Minishell",
+    "Shell Interpreter",
     [
-      "The objective of this project is for you to create a simple shell. Learnt a lot about file descriptors, process and bash. Coded in C.",
+      "The objective of this project is for you to create a simple <mark>shell</mark>. Learnt a lot about <mark>file descriptors</mark>, process and bash. Coded in C.",
     ],
     minishell,
     undefined,
@@ -90,18 +106,18 @@ const projets: Projet[] = [
   ),
 
   new Projet(
-    "Cub3D",
+    "First Player Viewer",
     [
-      "Interesting project where I learnt how raycasting works and how to render a 3D environment with a 2D map. Coded in C with the minilibx library.",
+      "Interesting project where I learnt how <mark>raycasting</mark> works and how to render a <mark>3D</mark> environment with a 2D map. Coded in <mark>C</mark> with the <mark>minilibx</mark> library.",
     ],
     undefined,
     cub3d,
     ["c", "vscode"],
-    "red"
+    "black"
   ),
 
   new Projet(
-    "Push Swap",
+    "Sorting Algorithms",
     [
       "A sorting algorithm that operates on two stacks with limited operations with a visualizer to see how it works. Coded in C with the Ncurse library.",
     ],
@@ -143,6 +159,7 @@ const namesntype: { [key: string]: string } = {
   nodejs: "lib",
   javascript: "lang",
   socketio: "lib",
+  oracle: "infra",
 };
 
 // const Description = styled.div<{ $align: string }>`
@@ -184,7 +201,10 @@ const namesntype: { [key: string]: string } = {
 // >
 
 // import { Tilt } from 'react-tilt'
-import { Tilt } from '@jdion/tilt-react'
+import { Tilt } from "@jdion/tilt-react";
+import { useState } from "react";
+
+
 // import WindowBloc from "../Box";
 
 // const defaultOptions = {
@@ -200,9 +220,15 @@ import { Tilt } from '@jdion/tilt-react'
 // }
 
 function Projets() {
+  const [visibleProjects, setVisibleProjects] = useState(4);
+
+  const showMoreProjects = () => {
+    setVisibleProjects((prevCount) => prevCount + 4);
+  };
+
   return (
     <>
-      {projets.map((projet, index) => (
+      {projets.slice(0, visibleProjects).map((projet, index) => (
         // {/* WHOLE PROJECT */}
         <div
           key={index}
@@ -214,29 +240,32 @@ function Projets() {
             <div className="project-wrapper__text load-hidden">
               <h3 className="project-wrapper__text-title">{projet.name}</h3>
               <div>
-                <p className="mb-4">
+                <span className="mb-4">
                   {projet.description.map((desc, index) => (
-                    <span key={index}  >{desc}</span>
+                    <p
+                      key={index}
+                      dangerouslySetInnerHTML={{ __html: desc }}
+                    ></p>
                   ))}
-                </p>
+                </span>
               </div>
               {/* CODE */}
               <div className="code">
-              {projet.code.map((name, index) => (
-                <Reveal
-                  key={index}
-                  animation={{
-                    hidden: { scale: 0 },
-                    visible: { scale: 1 },
-                  }}
-                  width="fit-content"
-                  transition={{ duration: 1, delay: index / 10 }}
-                >
-                  <Logo id="mywoman" $bg={colorsfromtype[namesntype[name]]}>
-                    <i className={`devicon-${nametoicon[name]}`}></i>
-                  </Logo>
-                </Reveal>
-              ))}
+                {projet.code.map((name, index) => (
+                  <Reveal
+                    key={index}
+                    animation={{
+                      hidden: { scale: 0 },
+                      visible: { scale: 1 },
+                    }}
+                    width="fit-content"
+                    transition={{ duration: 1, delay: index / 10 }}
+                  >
+                    <Logo id="mywoman" $bg={colorsfromtype[namesntype[name]]}>
+                      <i className={`devicon-${nametoicon[name]}`}></i>
+                    </Logo>
+                  </Reveal>
+                ))}
               </div>
               {/* <a
                 rel="noreferrer"
@@ -260,38 +289,60 @@ function Projets() {
           <div className=" lg:w-2/3 lg:pr-4 lg:pl-4 sm:w-full sm:pr-4 sm:pl-4">
             <div className="project-wrapper__image">
               <a rel="noreferrer" href="#!" target="_blank">
-          <Tilt >
-                <div
-                  data-tilt
-                  data-tilt-max="4"
-                  data-tilt-glare="true"
-                  data-tilt-max-glare="0.5"
-                  className="thumbnail rounded js-tilt"
-                >
-            {/* <WindowBloc
-              title={projet.name}
-                theme={"black"}
-                pad={"p-1"}
-                > */}
-                  {projet.video ? (
-                    <video autoPlay loop muted playsInline>
-                      <source src={projet.video} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <img
-                      alt="Project Image"
-                      className="max-w-full h-auto"
-                      src={projet.image}
-                    />
-                  )}
-                {/* </WindowBloc> */}
-                </div>
-          </Tilt>
+                <Tilt>
+                  <div
+                    data-tilt
+                    data-tilt-max="4"
+                    data-tilt-glare="true"
+                    data-tilt-max-glare="0.5"
+                    className="thumbnail rounded js-tilt"
+                  >
+                    <WindowBloc
+                      title={projet.name}
+                      theme={projet.color}
+                      pad={"p-1"}
+                    >
+                      {(projet.video && (
+                        <video autoPlay loop muted playsInline>
+                          <source src={projet.video} type="video/mp4" />
+                        </video>
+                      )) ||
+                        (projet.image && (
+                          <img
+                            alt="Project Image"
+                            className="max-w-full h-auto"
+                            src={projet.image}
+                          />
+                        )) || (
+                          <div
+                            className="flex justify-center items-center text-2xl"
+                            id="videx"
+                          >
+                            <h1>NO RENDER YET, COMING SOON ENOUGH</h1>
+                          </div>
+                        )}
+                    </WindowBloc>
+                  </div>
+                </Tilt>
               </a>
             </div>
           </div>
         </div>
       ))}
+      {projets.length > visibleProjects && (
+
+        <div className="showMore">
+        <ButtonBloc
+          $main={"rgb(249, 246, 238)"}
+          $secondary={"#131417"}
+          onClick={showMoreProjects}
+          className="py-2 px-6"
+        >
+          Show More
+        </ButtonBloc>
+          {/* // <button onClick={showMoreProjects}>Show More</button> */}
+        </div>
+      )}
     </>
   );
 }

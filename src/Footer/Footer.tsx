@@ -3,7 +3,7 @@ import arrow from "../assets/arrow.svg";
 import { scrollToElement } from "../App";
 function Footer({ to }: { to: any }) {
   return (
-    <div className="footer" style={{ height: "30vh"}}>
+    <div className="footer">
       <img
         src={arrow}
         onClick={() => scrollToElement(to)}

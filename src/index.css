@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+mark {
+  background-color: var(--my-blue);
+  color: var(--my-white);
+
+}
+
 @font-face {
   font-family: "Pixer";
   src: url("./assets/Pixer-Regular.woff");

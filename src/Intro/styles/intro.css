@@ -5,6 +5,7 @@
   --my-black:#131417;
   --my-red:#b30000;
   --my-blue:rgb(29, 78, 216);
+  --my-grey:rgb(149, 146, 138);
 }
 
 @media screen and (min-width: 769px) {

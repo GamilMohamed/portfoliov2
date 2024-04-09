@@ -9,6 +9,9 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  height: 30vh;
+  
+  background-color: var(--my-black);
 }
 
 .footer a {

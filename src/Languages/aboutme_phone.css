@@ -25,21 +25,32 @@
   }
 
   #ProfileNcv {
+    transform: translateY(3vh);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
-    line-height: 0.5;
+    /* line-height: 0.5; */
   }
 
   #CV {
-    /* display: none; */
+    display: none;
   }
 
   #Terminal {
     display: none;
   }
+
+  #Me {
+    display: block;
+    font-size: 1rem;
+    color: var(--my-white);
+    text-wrap: wrap;
+    text-align: left;
+    width: 80vw;
+  }
+
   /***********************/
   #LangBloc {
     display: flex;
@@ -48,13 +59,14 @@
     flex-wrap: wrap;
     flex-direction: row;
     /* background-color: white; */
-    /* background: linear-gradient(
+    background: linear-gradient(
       180deg,
-      rgba(19, 20, 23, 1) 25%,
-      rgba(255, 255, 255, 1) 0%
-    ); */
+      var(--my-black) 50%,
+      var(--my-white) 0%
+    );
     width: 100%;
-    height: 30vw;
+    margin-bottom: -10vh;
+    height:fit-content;
     /* background-color: green !important; */
   }
 
