@@ -117,7 +117,7 @@ const projets: Projet[] = [
   ),
 
   new Projet(
-    "Sorting Algorithms",
+    "Sorting Algorithm",
     [
       "A sorting algorithm that operates on two stacks with limited operations with a visualizer to see how it works. Coded in C with the Ncurse library.",
     ],
