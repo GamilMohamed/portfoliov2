@@ -49,7 +49,7 @@ function AboutMe() {
                 button={"READ"}
                 title={"CV"}
                 // action={() => (location.href = "src/assets/resume.pdf")}
-                href="https://gamilmohamed.github.io/assets/enresume.pdf"
+                href="https://gamilmohamed.github.io/assets/resumenew.pdf"
               >
                 <>
                   <p className="textbigscreen">Click to see my CV</p>
